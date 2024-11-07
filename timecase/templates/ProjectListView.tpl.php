@@ -19,7 +19,7 @@
 		$(document).ready(function(){
 			page.init();
 		});
-		
+
 		// hack for IE9 which may respond inconsistently with document.ready
 		setTimeout(function(){
 			if (!page.isInitialized) page.init();
@@ -45,7 +45,7 @@
 		<button id="saveProjectButton" class="btn btn-primary">Save Changes</button>
 	</div>
 </div>
-	
+
 <div class="container main">
 
 <div class="row">
@@ -56,7 +56,7 @@
 		<button id="newProjectButton" class="btn btn-primary btn-sidebar"><i class="icon-plus"></i>&nbsp; Add Project</button>
 	</p>
 	<hr>
-	
+
 <?php $this->display('_SidebarCommon.tpl.php');?>
 
 
@@ -83,7 +83,7 @@
 				<th id="header_Id">Id<# if (page.orderBy == 'Id') { #> <i class='icon-arrow-<#= page.orderDesc ? 'up' : 'down' #>' /><# } #></th>
 -->
 				<th id="header_Title"><i class="icon-reorder"></i>&nbsp; Title<# if (page.orderBy == 'Title') { #> <i class='icon-arrow-<#= page.orderDesc ? 'up' : 'down' #>' /><# } #></th>
-				<th id="header_CustomerId"><i class="icon-group"></i>&nbsp; Customer<# if (page.orderBy == 'CustomerId') { #> <i class='icon-arrow-<#= page.orderDesc ? 'up' : 'down' #>' /><# } #></th>
+<!--				<th id="header_CustomerId"><i class="icon-group"></i>&nbsp; Customer<# if (page.orderBy == 'CustomerId') { #> <i class='icon-arrow-<#= page.orderDesc ? 'up' : 'down' #>' /><# } #></th>-->
 				<th id="header_Deadline"><i class="icon-warning-sign"></i>&nbsp; Deadline Date<# if (page.orderBy == 'Deadline') { #> <i class='icon-arrow-<#= page.orderDesc ? 'up' : 'down' #>' /><# } #></th>
 				<th><i class="icon-warning-sign"></i>&nbsp; Deadline<# if (page.orderBy == 'DeadlineApproach') { #> <i class='icon-arrow-<#= page.orderDesc ? 'up' : 'down' #>' /><# } #></th>
 				<th id="header_Progress"><i class="icon-signal"></i>&nbsp; Progress<# if (page.orderBy == 'Progress') { #> <i class='icon-arrow-<#= page.orderDesc ? 'up' : 'down' #>' /><# } #></th>
@@ -102,7 +102,7 @@
 				<td><#= _.escape(item.get('id') || '') #></td>
 -->
 				<td><#= _.escape(item.get('title') || '') #></td>
-				<td><#= _.escape(item.get('customerName') || '') #></td>
+<!--				<td><#= _.escape(item.get('customerName') || '') #></td>-->
 				<td><#if (item.get('deadline')) { #><#= _date(app.parseDate(item.get('deadline'))).format('MMM D, YYYY H:mm') #><# } else { #>NULL<# } #></td>
 				<td><div class="progress progress-striped"><div class="bar" style="width: <#= _.escape(item.get('deadlineApproach') || '') #>%;"></div></div></td>
 				<td><div class="progress progress-striped"><div class="bar" style="width: <#= _.escape(item.get('progress') || '') #>%;"></div></div></td>
@@ -145,7 +145,7 @@
 						<span class="help-inline"></span>
 					</div>
 				</div>
-				<div id="customerIdInputContainer" class="control-group">
+				<div id="customerIdInputContainer" class="control-group" style="display: none;">
 					<label class="control-label" for="customerId">Customer</label>
 					<div class="controls inline-inputs">
 						<select id="customerId" name="customerId"></select>
@@ -209,7 +209,7 @@
 			</fieldset>
 		</form>
 	</script>
-	
+
 	<div id="projectCollectionContainer" class="collectionContainer">
 	</div>
 
@@ -220,7 +220,7 @@
 	<hr>
 
 	<footer>
-		
+
 	</footer>
 
 </div> <!-- /container -->

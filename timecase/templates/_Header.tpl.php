@@ -18,19 +18,19 @@
 	<link href="bootstrap/css/font-awesome.css" rel="stylesheet" />
 	<link href="bootstrap/css/bootstrap-datepicker.css" rel="stylesheet" />
 	<link href="bootstrap/css/bootstrap-combobox.css" rel="stylesheet" />
-	
+
 	<!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
 	<!--[if lt IE 9]>
 		<script type="text/javascript" src="scripts/libs/html5.js"></script>
 	<![endif]-->
-	
+
 	<!--[if lt IE 8]>
 		<script type="text/javascript" src="scripts/libs/json2.js"></script>
 	<![endif]-->
 
 	<!-- Le fav and touch icons -->
 	<link rel="shortcut icon" href="images/favicon.ico" />
-	
+
 	<script type="text/javascript">
 
 		// init global js vars
@@ -45,16 +45,16 @@
 
 		// we need user level inside js, not used for security just for display tweeks
 		var g_level_id = <?php echo (isset($this->currentUser->LevelId) ? $this->currentUser->LevelId : 0);?>;
-		
+
 	</script>
-	
+
 	<script type="text/javascript" src="scripts/libs/LAB.min.js"></script>
 	<script type="text/javascript">
 		$LAB
 			.script("scripts/libs/jquery-1.8.2.min.js").wait()
 			.script("bootstrap/js/bootstrap.min.js");
 	</script>
-	
+
 </head>
 
 <body>
@@ -66,29 +66,30 @@
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 			</a>
-			<a class="brand" href="">TimeCase</a>
-			
+			<a class="brand" href="">TimeCase - Formazione CCS</a>
+
 			<span id="currentTimetrack"></span>
-			
+
 			<div class="nav-collapse collapse">
-			
+
 			<?php if ($this->currentUser):?>
-			
+
 				<ul class="nav">
-				
+
 					<?php if(!($this->currentUser->LevelId & $this->ROLE_CUSTOMER)):?>
 					<li <?php if ($this->nav=='timeentries') { echo 'class="active"'; } ?>><a href="timeentries">Time Tracking</a></li>
 					<?php endif;?>
-				
+
 					<?php if($this->currentUser->LevelId & ($this->ROLE_ADMIN | $this->ROLE_MANAGER)):?>
-					<li <?php if ($this->nav=='customers') { echo 'class="active"'; } ?>><a href="customers">Customers</a></li>
+					<li <?php if ($this->nav=='customers') { echo 'class="active"'; } ?> style="display: none;"><a
+                                href="customers">Customers</a></li>
 					<li <?php if ($this->nav=='projects') { echo 'class="active"'; } ?>><a href="projects">Projects</a></li>
 					<?php endif;?>
-					
+
 					<?php if(!($this->currentUser->LevelId & $this->ROLE_BASIC_USER)):?>
 					<li <?php if ($this->nav=='reports') { echo 'class="active"'; } ?>><a href="reports">Reports</a></li>
 					<?php endif;?>
-					
+
 					<?php if($this->currentUser->LevelId & $this->ROLE_ADMIN):?>
 					<li class="dropdown">
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown">Settings <b class="caret"></b></a>
@@ -99,7 +100,7 @@
 					</ul>
 					</li>
 					<?php endif;?>
-					
+
 					<li class="dropdown">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown"><?php echo ucfirst($this->currentUser->Username)?> <b class="caret"></b></a>
 						<ul class="dropdown-menu">
@@ -118,7 +119,7 @@
 				</ul>
 			<?php endif;?>
 			</div><!--/.nav-collapse -->
-			
+
 		</div>
 	</div>
 </div>
@@ -130,19 +131,19 @@
 		<h3>TimeCase</h3>
 	</div>
 	<div class="modal-body" style="max-height: 300px">
-	
+
 		<p>TimeCase helps you keep track of your time. It is a powerful yet easy to use web application for everyone who wants to see how much time is spent on certain tasks and projects.</p>
 
 		<p>Version: TimeCase v2.0</p>
 
 		<p>For more info please visit <a target="_blank" href="https://interactive32.com">https://interactive32.com</a></p>
-		
-	
+
+
 		<br />
 
 		<p>Copyright &copy; 2008 - <?php echo date('Y'); ?> <a href="http://interactive32.com">Interactive32.com</a>. All rights reserved.</p>
-	
-			
+
+
 		<p>&nbsp;</p>
 	</div>
 	<div class="modal-footer">

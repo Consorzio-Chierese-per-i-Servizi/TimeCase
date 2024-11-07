@@ -26,7 +26,7 @@ var page = {
 		// ensure initialization only occurs once
 		if (page.isInitialized || page.isInitializing) return;
 		page.isInitializing = true;
-	
+
 		if (!$.isReady && console) console.warn('page was initialized before dom is ready.  views may not render properly.');
 
 		// make the new button clickable
@@ -65,7 +65,7 @@ var page = {
 			page.fetchParams.page = 1;
 			page.fetchProjects(page.fetchParams);
 		});
-		
+
 		// make the rows clickable ('rendered' is a custom event, not a standard backbone event)
 		this.collectionView.on('rendered',function(){
 
@@ -94,7 +94,7 @@ var page = {
 				page.fetchParams.page = this.id.substr(5);
 				page.fetchProjects(page.fetchParams);
 			});
-			
+
 			page.isInitialized = true;
 			page.isInitializing = false;
 		});
@@ -237,6 +237,8 @@ var page = {
 			var customerIdValues = new model.CustomerCollection();
 		else
 			var customerIdValues = new model.CustomerActiveOnlyCollection();
+        var ddmine = $('#customerId');
+        ddmine.append('<option value="1" selected>Default Customer</option>');
 		customerIdValues.fetch({
 			success: function(c){
 				var dd = $('#customerId');
@@ -249,7 +251,7 @@ var page = {
 						page.project.get('customerId') == item.get('id')
 					));
 				});
-				
+
 				if (!app.browserSucks())
 				{
 					dd.combobox();
@@ -277,7 +279,7 @@ var page = {
 						page.project.get('statusId') == item.get('id')
 					));
 				});
-				
+
 				if (!app.browserSucks())
 				{
 					dd.combobox();
@@ -336,7 +338,9 @@ var page = {
 		page.project.save({
 
 			'title': $('input#title').val(),
-			'customerId': $('select#customerId').val(),
+			// 'customerId': $('select#customerId').val(),
+            // Tolgo la gestione clienti mettendo un valore farlocco
+			'customerId': '1',
 			'created': $('input#created').val()+' '+$('input#created-time').val(),
 			'closed': $('input#closed').val()+' '+$('input#closed-time').val(),
 			'deadline': $('input#deadline').val()+' '+$('input#deadline-time').val(),
