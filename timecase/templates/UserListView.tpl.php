@@ -19,7 +19,7 @@
 		$(document).ready(function(){
 			page.init();
 		});
-		
+
 		// hack for IE9 which may respond inconsistently with document.ready
 		setTimeout(function(){
 			if (!page.isInitialized) page.init();
@@ -45,7 +45,7 @@
 		<button id="saveUserButton" class="btn btn-primary">Save Changes</button>
 	</div>
 </div>
-	
+
 <div class="container main">
 
 <div class="row">
@@ -56,7 +56,7 @@
 		<button id="newUserButton" class="btn btn-primary btn-sidebar"><i class="icon-plus"></i>&nbsp; Add User</button>
 	</p>
 	<hr>
-	
+
 <?php $this->display('_SidebarCommon.tpl.php');?>
 
 
@@ -73,14 +73,16 @@
 		</span>
 	</h1>
 	<div class="clearfix"></div>
-	
+
 	<!-- underscore template for the collection -->
 	<script type="text/template" id="userCollectionTemplate">
 		<table class="collection table table-bordered">
 		<thead>
 			<tr>
 				<th id="header_Username"><i class="icon-user"></i>&nbsp; Username<# if (page.orderBy == 'Username') { #> <i class='icon-arrow-<#= page.orderDesc ? 'up' : 'down' #>' /><# } #></th>
-				<th id="header_LevelId"><i class="icon-cog"></i>&nbsp; Level<# if (page.orderBy == 'LevelId') { #> <i class='icon-arrow-<#= page.orderDesc ? 'up' : 'down' #>' /><# } #></th>
+<!--				<th id="header_LevelId"><i class="icon-cog"></i>&nbsp; Level<# if (page.orderBy == 'LevelId') { #> <i class='icon-arrow-<#= page.orderDesc ? 'up' : 'down' #>' /><# } #></th>-->
+				<th id="header_LevelId"><i class="icon-cog"></i>&nbsp; Ruolo<# if (page.orderBy == 'LevelId') { #> <i
+                            class='icon-arrow-<#= page.orderDesc ? 'up' : 'down' #>' /><# } #></th>
 				<th id="header_FullName"><i class="icon-reorder"></i>&nbsp; Full Name<# if (page.orderBy == 'FullName') { #> <i class='icon-arrow-<#= page.orderDesc ? 'up' : 'down' #>' /><# } #></th>
 				<th id="header_Email"><i class="icon-envelope"></i>&nbsp; Email<# if (page.orderBy == 'Email') { #> <i class='icon-arrow-<#= page.orderDesc ? 'up' : 'down' #>' /><# } #></th>
 			</tr>
@@ -119,7 +121,8 @@
 					</div>
 				</div>
 				<div id="levelIdInputContainer" class="control-group">
-					<label class="control-label" for="levelId">Level</label>
+<!--					<label class="control-label" for="levelId">Level</label>-->
+					<label class="control-label" for="levelId">Ruolo</label>
 					<div class="controls inline-inputs">
 						<select id="levelId" name="levelId"></select>
 						<span class="help-inline"></span>
@@ -183,7 +186,7 @@
 	<hr>
 
 	<footer>
-		
+
 	</footer>
 
 </div> <!-- /container -->

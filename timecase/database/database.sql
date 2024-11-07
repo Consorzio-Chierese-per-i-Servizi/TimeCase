@@ -57,10 +57,11 @@ CREATE TABLE IF NOT EXISTS `levels` (
 
 INSERT INTO `levels` (`id`, `name`) VALUES
 	(1, 'admin'),
-	(2, 'project manager'),
-	(4, 'user'),
-	(8, 'customer'),
-	(16, 'basic user');
+	(2, 'responsabile di progetto'),
+	(4, 'dipendente'),
+	(8, 'customer');
+-- 	(8, 'customer'),
+-- 	(16, 'basic user');
 
 DROP TABLE IF EXISTS `projects`;
 CREATE TABLE IF NOT EXISTS `projects` (

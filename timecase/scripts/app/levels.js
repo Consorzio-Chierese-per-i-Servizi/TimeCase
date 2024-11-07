@@ -26,7 +26,7 @@ var page = {
 		// ensure initialization only occurs once
 		if (page.isInitialized || page.isInitializing) return;
 		page.isInitializing = true;
-	
+
 		if (!$.isReady && console) console.warn('page was initialized before dom is ready.  views may not render properly.');
 
 		// make the new button clickable
@@ -65,7 +65,7 @@ var page = {
 			page.fetchParams.page = 1;
 			page.fetchLevels(page.fetchParams);
 		});
-		
+
 		// make the rows clickable ('rendered' is a custom event, not a standard backbone event)
 		this.collectionView.on('rendered',function(){
 
@@ -94,7 +94,7 @@ var page = {
 				page.fetchParams.page = this.id.substr(5);
 				page.fetchLevels(page.fetchParams);
 			});
-			
+
 			page.isInitialized = true;
 			page.isInitializing = false;
 		});
@@ -281,7 +281,8 @@ var page = {
 			wait: true,
 			success: function(){
 				$('#levelDetailDialog').modal('hide');
-				setTimeout("app.appendAlert('Level was sucessfully " + (isNew ? "inserted" : "updated") + "','alert-success',3000,'collectionAlert')",500);
+				// setTimeout("app.appendAlert('Level was sucessfully " + (isNew ? "inserted" : "updated") + "','alert-success',3000,'collectionAlert')",500);
+				setTimeout("app.appendAlert('Il ruolo è stato " + (isNew ? "creato" : "aggiornato") + "','alert-success',3000,'collectionAlert')",500);
 				app.hideProgress('modelLoader');
 
 				// if the collection was initally new then we need to add it to the collection now
@@ -331,7 +332,8 @@ var page = {
 			wait: true,
 			success: function(){
 				$('#levelDetailDialog').modal('hide');
-				setTimeout("app.appendAlert('The Level record was deleted','alert-success',3000,'collectionAlert')",500);
+				// setTimeout("app.appendAlert('The Level record was deleted','alert-success',3000,'collectionAlert')",500);
+				setTimeout("app.appendAlert('Il ruolo è stato cancellato','alert-success',3000,'collectionAlert')",500);
 				app.hideProgress('modelLoader');
 
 				if (model.reloadCollectionOnModelUpdate)
