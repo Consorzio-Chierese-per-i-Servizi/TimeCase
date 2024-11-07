@@ -1,5 +1,5 @@
 <?php
-	$this->assign('title','TimeCase | Projects');
+	$this->assign('title','TimeCase CCS | Programmi');
 	$this->assign('nav','projects');
 
 	$this->display('_Header.tpl.php');
@@ -65,7 +65,8 @@
 <div class="span10">
 
 	<h1>
-		<i class="icon-briefcase"></i> Projects
+<!--		<i class="icon-briefcase"></i> Projects-->
+		<i class="icon-briefcase"></i> Programmi
 		<span id=loader class="loader progress progress-striped active"><span class="bar"></span></span>
 		<span class='input-append pull-right searchContainer'>
 			<input id='filter' type="text" placeholder="Search..." />

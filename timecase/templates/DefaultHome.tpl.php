@@ -27,13 +27,13 @@
 				<!-- Main hero unit for a primary marketing message or call to action -->
 				<div>
 					<h1>TimeCase</h1>
-					
+
 					<br>
 					<p>Manage your projects and activities with accuracy and efficiency.</p>
-					
-					<br /> 
+
+					<br />
 					<a href="loginform" class="btn btn-primary btn-large">Login &raquo;</a>
-					
+
 				</div>
 		    </div>
 		     <div class="span2">
@@ -44,10 +44,10 @@
 		  </div>
 
 		</div>
-		
+
 		<div class="row">
 			<div class="span3">
-				<h2><i class="icon-time"></i> Time Tracking</h2>
+				<h2><i class="icon-time"></i>Registrazioni</h2>
 				<p>Keep track of your time with accuracy and precision.
 				Use the same web app on your desktop, tablet or phone.</p>
 			</div>
@@ -57,12 +57,13 @@
 			</div>
 			<div class="span3">
 				<h2><i class="icon-user"></i> Users</h2>
-				 <p>Users will adapt quickly to this modern and easy to use web application. 
+				 <p>Users will adapt quickly to this modern and easy to use web application.
 				 You can assign different roles to different users and pick team managers.</p>
 		 	</div>
 
 			<div class="span3">
-				<h2><i class="icon-file"></i> Reports</h2>
+<!--				<h2><i class="icon-file"></i> Reports</h2>-->
+				<h2><i class="icon-file"></i> Resoconti</h2>
 				<p>View and analyze reports in real-time with flexible ajax filters. Export data as csv file or display them as printable html.</p>
 			</div>
 		</div>

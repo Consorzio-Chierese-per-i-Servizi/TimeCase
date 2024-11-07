@@ -1,5 +1,6 @@
 <?php
-	$this->assign('title','TimeCase | Reports');
+//	$this->assign('title','TimeCase | Reports');
+	$this->assign('title','TimeCase CCS | Resoconti');
 	$this->assign('nav','reports');
 
 	$this->display('_Header.tpl.php');
@@ -20,7 +21,7 @@
 		$(document).ready(function(){
 			page.init();
 		});
-		
+
 		// hack for IE9 which may respond inconsistently with document.ready
 		setTimeout(function(){
 			if (!page.isInitialized) page.init();
@@ -34,22 +35,23 @@
 <div class="span12">
 
 <h1>
-	<i class="icon-file"></i> Reports
+<!--	<i class="icon-file"></i> Reports-->
+	<i class="icon-file"></i> Resoconti
 	<span id="modelLoader" class="loader progress progress-striped active"><span class="bar"></span></span>
-	
+
 	<span class='filter-button pull-right'>
 	<button class="btn btn-primary showReportButton" data-type="csv"><i class="icon-download"></i>&nbsp; Download CSV</button>
 	<button class="btn btn-primary showReportButton" data-type="html"><i class="icon-file"></i>&nbsp; Show HTML</button>
 	</span>
 </h1>
 <div class="clearfix"></div>
-	
+
 </div>
-</div> <!-- // row -->	
+</div> <!-- // row -->
 
 <div class="row">
 <div class="span12">
-	
+
 <div id="filterContainer">
 <div id="collectionAlert"></div>
 <hr>
@@ -60,7 +62,7 @@
 	<div class="control-group pull-left" id="filterStartInputContainer">
 		<label for="start" class="control-label">From</label>
 		<div class="controls ">
-			<input type="text" value="<?php echo date('Y-m-d')?>" id="start" class="date-picker input-large"> 
+			<input type="text" value="<?php echo date('Y-m-d')?>" id="start" class="date-picker input-large">
 			<input type="text" class="time-picker input-xlarge" id="start-time" value="00:00">
 			<span class="help-inline"></span>
 		</div>
@@ -89,7 +91,7 @@
 		</div>
 	</div>
 	<?php endif;?>
-	
+
 	<div class="control-group pull-left combo" id="filterProjectIdInputContainer">
 		<label for="projectId" class="control-label">Project</label>
 		<div id="parentProjectId" class="controls">
@@ -99,7 +101,7 @@
 			<span class="help-inline" style="display: none;"></span>
 		</div>
 	</div>
-	
+
 	<div class="control-group pull-left combo" id="userIdInputContainer">
 		<label for="userId" class="control-label">User</label>
 		<div class="controls">
@@ -109,7 +111,7 @@
 			<span class="help-inline" style="display: none;"></span>
 		</div>
 	</div>
-	
+
 	<div class="control-group pull-left combo" id="filterCategoryIdInputContainer">
 		<label for="categoryId" class="control-label">Work Type</label>
 		<div class="controls">
@@ -119,7 +121,7 @@
 			<span class="help-inline" style="display: none;"></span>
 		</div>
 	</div>
-	
+
 
 
 </div>
@@ -148,7 +150,7 @@
 				<th id="header_ProjectId">Project<# if (page.orderBy == 'ProjectId') { #> <i class='icon-arrow-<#= page.orderDesc ? 'up' : 'down' #>' /><# } #></th>
 				<th id="header_UserId">User<# if (page.orderBy == 'UserId') { #> <i class='icon-arrow-<#= page.orderDesc ? 'up' : 'down' #>' /><# } #></th>
 				<th id="header_CategoryId">Work Type<# if (page.orderBy == 'CategoryId') { #> <i class='icon-arrow-<#= page.orderDesc ? 'up' : 'down' #>' /><# } #></th>
-				<th id="header_Description">Description<# if (page.orderBy == 'Description') { #> <i class='icon-arrow-<#= page.orderDesc ? 'up' : 'down' #>' /><# } #></th>			
+				<th id="header_Description">Description<# if (page.orderBy == 'Description') { #> <i class='icon-arrow-<#= page.orderDesc ? 'up' : 'down' #>' /><# } #></th>
 				<th id="header_Start">Start<# if (page.orderBy == 'Start') { #> <i class='icon-arrow-<#= page.orderDesc ? 'up' : 'down' #>' /><# } #></th>
 				<th id="header_End">End<# if (page.orderBy == 'End') { #> <i class='icon-arrow-<#= page.orderDesc ? 'up' : 'down' #>' /><# } #></th>
 				<th id="header_Duration">Duration</th>
@@ -174,7 +176,7 @@
 
 		<#=  view.getPaginationHtml(page) #>
 	</script>
-	
+
 	<div id="timeEntryCollectionContainer" class="collectionContainer"></div>
 
 
@@ -185,7 +187,7 @@
 	<hr>
 
 	<footer>
-		
+
 	</footer>
 
 </div> <!-- /container -->

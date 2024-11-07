@@ -77,26 +77,43 @@
 				<ul class="nav">
 
 					<?php if(!($this->currentUser->LevelId & $this->ROLE_CUSTOMER)):?>
-					<li <?php if ($this->nav=='timeentries') { echo 'class="active"'; } ?>><a href="timeentries">Time Tracking</a></li>
+					<li <?php if ($this->nav=='timeentries') { echo 'class="active"'; } ?>><a
+                                href="timeentries">Registrazioni</a></li>
 					<?php endif;?>
 
 					<?php if($this->currentUser->LevelId & ($this->ROLE_ADMIN | $this->ROLE_MANAGER)):?>
 					<li <?php if ($this->nav=='customers') { echo 'class="active"'; } ?> style="display: none;"><a
                                 href="customers">Customers</a></li>
+                    <!--
 					<li <?php if ($this->nav=='projects') { echo 'class="active"'; } ?>><a href="projects">Projects</a></li>
+					-->
+					<li <?php if ($this->nav=='projects') { echo 'class="active"'; } ?>><a
+                                    href="projects">Programmi</a></li>
 					<?php endif;?>
 
 					<?php if(!($this->currentUser->LevelId & $this->ROLE_BASIC_USER)):?>
+                    <!--
 					<li <?php if ($this->nav=='reports') { echo 'class="active"'; } ?>><a href="reports">Reports</a></li>
+					-->
+					<li <?php if ($this->nav=='reports') { echo 'class="active"'; } ?>><a
+                                href="reports">Resoconti</a></li>
 					<?php endif;?>
 
 					<?php if($this->currentUser->LevelId & $this->ROLE_ADMIN):?>
 					<li class="dropdown">
-					<a href="#" class="dropdown-toggle" data-toggle="dropdown">Settings <b class="caret"></b></a>
+<!--					<a href="#" class="dropdown-toggle" data-toggle="dropdown">Settings <b class="caret"></b></a>-->
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown">Impostazioni <b class="caret"></b></a>
 					<ul class="dropdown-menu">
+                        <!--
 					<li <?php if ($this->nav=='users') { echo 'class="active"'; } ?>><a href="users">Users</a></li>
 					<li <?php if ($this->nav=='categories') { echo 'class="active"'; } ?>><a href="categories">Work Types</a></li>
 					<li <?php if ($this->nav=='statuses') { echo 'class="active"'; } ?>><a href="statuses">Statuses</a></li>
+					-->
+                    <li <?php if ($this->nav=='users') { echo 'class="active"'; } ?>><a href="users">Utenti</a></li>
+                    <li <?php if ($this->nav=='categories') { echo 'class="active"'; } ?>><a
+                                href="categories">Tipi di registrazione</a></li>
+                    <li <?php if ($this->nav=='statuses') { echo 'class="active"'; } ?>><a
+                                href="statuses">Stati</a></li>
 					</ul>
 					</li>
 					<?php endif;?>
@@ -105,10 +122,12 @@
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown"><?php echo ucfirst($this->currentUser->Username)?> <b class="caret"></b></a>
 						<ul class="dropdown-menu">
 						<?php if(!($this->currentUser->LevelId & ($this->ROLE_CUSTOMER))):?>
-						<li><a href="accountsettings">Account Settings</a></li>
+<!--						<li><a href="accountsettings">Account Settings</a></li>-->
+						<li><a href="accountsettings">Impostazioni Account</a></li>
 						<?php endif;?>
-						<li><a data-toggle="modal" href="#aboutUs">About TimeCase</a></li>
-						<li><a href="logout">Logout</a></li>
+<!--						<li><a data-toggle="modal" href="#aboutUs">About TimeCase</a></li>-->
+<!--						<li><a href="logout">Logout</a></li>-->
+						<li><a href="logout">Esci</a></li>
 						</ul>
 					</li>
 

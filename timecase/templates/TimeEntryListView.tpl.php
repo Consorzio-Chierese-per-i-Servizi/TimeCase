@@ -19,7 +19,7 @@
 		$(document).ready(function(){
 			page.init();
 		});
-		
+
 		// hack for IE9 which may respond inconsistently with document.ready
 		setTimeout(function(){
 			if (!page.isInitialized) page.init();
@@ -59,10 +59,10 @@
 	<div class="modal-body">
 		<div id="secondModelAlert"></div>
 		<div id="defaultsModelContainer">
-		
+
 		<form onsubmit="return false;" class="form-horizontal">
 		<fieldset>
-			<?php if(!($this->currentUser->LevelId & ($this->ROLE_CUSTOMER | $this->ROLE_BASIC_USER))):?>			
+			<?php if(!($this->currentUser->LevelId & ($this->ROLE_CUSTOMER | $this->ROLE_BASIC_USER))):?>
 			<div id="filterCustomerIdInputContainer" class="control-group">
 				<label class="control-label" for="filterCustomerId">Customer Filter</label>
 				<div class="controls inline-inputs">
@@ -87,8 +87,8 @@
 			</div>
 		</fieldset>
 		</form>
-			
-			
+
+
 		</div>
 	</div>
 	<div class="modal-footer">
@@ -103,42 +103,42 @@
 <div class="span2">
 
 	<hr>
-	
+
 	<?php if(!($this->currentUser->LevelId & $this->ROLE_BASIC_USER)):?>
 	<p id="newButtonContainer" class="buttonContainer">
 		<button id="newTimeEntryButton" class="btn btn-primary btn-sidebar"><i class="icon-plus"></i>&nbsp; Add Time Entry</button>
 	</p>
 	<?php endif;?>
-	
+
 	<p class="buttonContainer">
 		<button id="setDefaultsButton" class="btn btn-primary btn-sidebar"><i class="icon-star"></i>&nbsp; Set Default Project</button>
 	</p>
-	
+
 	<hr>
 
 	<p class="buttonContainer">
 	 <?php if ($this->useSessionTimer):?>
-	 
+
 		<?php if (isset($_SESSION['timetracking'])):?>
 			<button id="timeTrackingButton" class="btn btn-warning btn-sidebar" data-state="started"><i class="icon-stop"></i>&nbsp; <span>Stop Timer</span></button>
 		<?php else:?>
 			<button id="timeTrackingButton" class="btn btn-success btn-sidebar" data-state="stopped"><i class="icon-play"></i>&nbsp; <span>Start Timer</span></button>
 		<?php endif;?>
-		
+
 	 <?php else:?>
-	 
+
 	 	<?php if ($this->timer):?>
 			<button id="timeTrackingButton" class="btn btn-warning btn-sidebar" data-state="started"><i class="icon-stop"></i>&nbsp; <span>Stop Timer</span></button>
 		<?php else:?>
 			<button id="timeTrackingButton" class="btn btn-success btn-sidebar" data-state="stopped"><i class="icon-play"></i>&nbsp; <span>Start Timer</span></button>
 		<?php endif;?>
-		
-		
+
+
 	 <?php endif;?>
 	</p>
-	
+
 	<hr>
-	
+
 <?php $this->display('_SidebarCommon.tpl.php');?>
 
 
@@ -147,7 +147,7 @@
 <div class="span10">
 
 	<h1>
-		<i class="icon-time"></i> Time Tracking
+		<i class="icon-time"></i> Registrazioni
 		<span id=loader class="loader progress progress-striped active"><span class="bar"></span></span>
 		<span class='input-append pull-right searchContainer'>
 			<input id='filter' type="text" placeholder="Search..." />
@@ -215,7 +215,7 @@
 					<label class="control-label" for="start">Start</label>
 					<div class="controls inline-inputs">
 					 <div class="timespan">
-						<input type="text" class="date-picker input-xlarge" id="start" value="<#= _date(app.parseDate(item.get('start'))).format('YY-MM-DD') #>"> 
+						<input type="text" class="date-picker input-xlarge" id="start" value="<#= _date(app.parseDate(item.get('start'))).format('YY-MM-DD') #>">
 						<input type="text" class="time-picker input-xlarge" id="start-time" value="<#= _date(app.parseDate(item.get('start'))).format('H:mm') #>">
 						<span class="quick-times">
 							<span class="start-btns">
@@ -315,12 +315,12 @@
 
 </div>
 </div> <!-- /row -->
-	
+
 	<!-- footer -->
 	<hr>
 
 	<footer>
-		
+
 	</footer>
 
 </div> <!-- /container -->
