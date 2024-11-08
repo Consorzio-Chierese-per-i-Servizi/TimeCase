@@ -115,13 +115,13 @@
 	</p>
 	<?php endif;?>
 
-	<p class="buttonContainer">
+	<p class="buttonContainer" style="display: none;">
 		<button id="setDefaultsButton" class="btn btn-primary btn-sidebar"><i class="icon-star"></i>&nbsp; Set Default Project</button>
 	</p>
 
-	<hr>
+<!--	<hr>-->
 
-	<p class="buttonContainer">
+	<p class="buttonContainer" style="display: none;">
 	 <?php if ($this->useSessionTimer):?>
 
 		<?php if (isset($_SESSION['timetracking'])):?>
@@ -142,7 +142,7 @@
 	 <?php endif;?>
 	</p>
 
-	<hr>
+<!--	<hr>-->
 
 <?php $this->display('_SidebarCommon.tpl.php');?>
 
@@ -155,7 +155,8 @@
 		<i class="icon-time"></i> Registrazioni
 		<span id=loader class="loader progress progress-striped active"><span class="bar"></span></span>
 		<span class='input-append pull-right searchContainer'>
-			<input id='filter' type="text" placeholder="Search..." />
+<!--			<input id='filter' type="text" placeholder="Search..." />-->
+			<input id='filter' type="text" placeholder="Ricerca..." />
 			<button class='btn add-on'><i class="icon-search"></i></button>
 		</span>
 	</h1>
@@ -169,11 +170,23 @@
 				<!--
 				<th id="header_Id">Id<# if (page.orderBy == 'Id') { #> <i class='icon-arrow-<#= page.orderDesc ? 'up' : 'down' #>' /><# } #></th>
 				-->
-				<th id="header_ProjectId"><i class="icon-briefcase"></i>&nbsp; Project<# if (page.orderBy == 'ProjectId') { #> <i class='icon-arrow-<#= page.orderDesc ? 'up' : 'down' #>' /><# } #></th>
-				<th id="header_UserId"><i class="icon-user"></i>&nbsp; User Name<# if (page.orderBy == 'UserId') { #> <i class='icon-arrow-<#= page.orderDesc ? 'up' : 'down' #>' /><# } #></th>
-				<th id="header_CategoryId"><i class="icon-reorder"></i>&nbsp; Work Type<# if (page.orderBy == 'CategoryId') { #> <i class='icon-arrow-<#= page.orderDesc ? 'up' : 'down' #>' /><# } #></th>
-				<th id="header_Description"><i class="icon-reorder"></i>&nbsp; Description<# if (page.orderBy == 'Description') { #> <i class='icon-arrow-<#= page.orderDesc ? 'up' : 'down' #>' /><# } #></th>
-				<th id="header_Duration"><i class="icon-time"></i>&nbsp; Duration<# if (page.orderBy == 'Duration') { #> <i class='icon-arrow-<#= page.orderDesc ? 'up' : 'down' #>' /><# } #></th>
+<!--				<th id="header_ProjectId"><i class="icon-briefcase"></i>&nbsp; Project<# if (page.orderBy == 'ProjectId') { #> <i class='icon-arrow-<#= page.orderDesc ? 'up' : 'down' #>' /><# } #></th>-->
+				<th id="header_ProjectId"><i class="icon-briefcase"></i>&nbsp; Programma<# if (page.orderBy ==
+                    'ProjectId') { #> <i class='icon-arrow-<#= page.orderDesc ? 'up' : 'down' #>' /><# } #></th>
+<!--				<th id="header_UserId"><i class="icon-user"></i>&nbsp; User Name<# if (page.orderBy == 'UserId') { #> <i class='icon-arrow-<#= page.orderDesc ? 'up' : 'down' #>' /><# } #></th>-->
+				<th id="header_UserId"><i class="icon-user"></i>&nbsp; Dipendente<# if (page.orderBy == 'UserId') { #>
+                    <i class='icon-arrow-<#= page.orderDesc ? 'up' : 'down' #>' /><# } #></th>
+<!--				<th id="header_CategoryId"><i class="icon-reorder"></i>&nbsp; Work Type<# if (page.orderBy == 'CategoryId') { #> <i class='icon-arrow-<#= page.orderDesc ? 'up' : 'down' #>' /><# } #></th>-->
+				<th id="header_CategoryId"><i class="icon-reorder"></i>&nbsp; Tipologia Registrazione<# if (page.orderBy
+                    ==
+                    'CategoryId') {
+                    #> <i class='icon-arrow-<#= page.orderDesc ? 'up' : 'down' #>' /><# } #></th>
+<!--				<th id="header_Description"><i class="icon-reorder"></i>&nbsp; Description<# if (page.orderBy == 'Description') { #> <i class='icon-arrow-<#= page.orderDesc ? 'up' : 'down' #>' /><# } #></th>-->
+				<th id="header_Description"><i class="icon-reorder"></i>&nbsp; Descrizione<# if (page.orderBy ==
+                    'Description') { #> <i class='icon-arrow-<#= page.orderDesc ? 'up' : 'down' #>' /><# } #></th>
+<!--				<th id="header_Duration"><i class="icon-time"></i>&nbsp; Duration<# if (page.orderBy == 'Duration') { #> <i class='icon-arrow-<#= page.orderDesc ? 'up' : 'down' #>' /><# } #></th>-->
+				<th id="header_Duration"><i class="icon-time"></i>&nbsp; Durata<# if (page.orderBy == 'Duration') { #>
+                    <i class='icon-arrow-<#= page.orderDesc ? 'up' : 'down' #>' /><# } #></th>
 <!-- UNCOMMENT TO SHOW ADDITIONAL COLUMNS
 				<th><i class="icon-user"></i>&nbsp; Customer Name</th>
 				<th id="header_Start"><i class="icon-reorder"></i>&nbsp; Start<# if (page.orderBy == 'Start') { #> <i class='icon-arrow-<#= page.orderDesc ? 'up' : 'down' #>' /><# } #></th>
