@@ -55,11 +55,11 @@ class UserController extends AppBaseController implements IAuthenticatable
 				self::$ROLE_ADVANCED_USER |
 				self::$ROLE_BASIC_USER |
 				self::$ROLE_CUSTOMER, 'User.LoginForm');
-		
+
 		try
 		{
 			$criteria = new UserCriteria();
-				
+
 			// never show default customers account because it's read only
 			$criteria->Id_NotEquals = self::$DEFAULT_CUSTOMER_USER;
 
@@ -69,7 +69,7 @@ class UserController extends AppBaseController implements IAuthenticatable
 				$criteria->AddFilter(new CriteriaFilter('Id', $this->GetCurrentUser()->UserId));
 			}
 
-				
+
 			$filter = RequestUtil::Get('filter');
 			if ($filter) $criteria->AddFilter(
 					new CriteriaFilter('Id,Username,LevelId,FullName,Email,Password,Details'
@@ -155,7 +155,7 @@ class UserController extends AppBaseController implements IAuthenticatable
 	{
 		$this->RequirePermission(
 				self::$ROLE_ADMIN, 'User.LoginForm');
-		
+
 
 		try
 		{
@@ -242,12 +242,12 @@ class UserController extends AppBaseController implements IAuthenticatable
 			}
 
 			$pk = $this->GetRouter()->GetUrlParam('id');
-				
+
 			if ($pk == self::$DEFAULT_CUSTOMER_USER){
 				$this->RenderErrorJSON('Default customers account cannot be changed or deleted.');
 				return;
 			}
-				
+
 			$user = $this->Phreezer->Get('User',$pk);
 
 
@@ -255,9 +255,9 @@ class UserController extends AppBaseController implements IAuthenticatable
 			$user->FullName = $this->SafeGetVal($json, 'fullName', $user->FullName);
 			$user->Email = $this->SafeGetVal($json, 'email', $user->Email);
 			$user->Details = $this->SafeGetVal($json, 'details', $user->Details);
-				
+
 			$user->LevelId = $this->SafeGetVal($json, 'levelId', $user->LevelId);
-				
+
 			// do not allow customer to be selected
 			if ($user->LevelId == self::$ROLE_CUSTOMER) $user->LevelId = '';
 
@@ -298,18 +298,18 @@ class UserController extends AppBaseController implements IAuthenticatable
 	{
 		$this->RequirePermission(
 				self::$ROLE_ADMIN, 'User.LoginForm');
-		
+
 
 		try
 		{
 
 			$pk = $this->GetRouter()->GetUrlParam('id');
-				
+
 			if ($pk == self::$DEFAULT_CUSTOMER_USER){
 				$this->RenderErrorJSON('Default customers account cannot be changed or deleted.');
 				return;
 			}
-				
+
 			$user = $this->Phreezer->Get('User',$pk);
 
 			$user->Delete();
@@ -330,7 +330,7 @@ class UserController extends AppBaseController implements IAuthenticatable
 	 * Display the login form
 	 */
 	public function LoginForm()
-	{		
+	{
 		if ($this->GetCurrentUser()){
 			$user = $this->GetCurrentUser();
 			if ($user->LevelId == self::$ROLE_CUSTOMER)
@@ -338,7 +338,7 @@ class UserController extends AppBaseController implements IAuthenticatable
 			else
 				$this->Redirect('TimeEntry.ListView');
 		}
-		
+
 		$this->Assign("currentUser", $this->GetCurrentUser());
 		$this->Render("Secure");
 	}
@@ -355,7 +355,7 @@ class UserController extends AppBaseController implements IAuthenticatable
 
 			// login success
 			$this->SetCurrentUser($this);
-				
+
 			if ($this->LevelId == self::$ROLE_CUSTOMER)
 				$this->Redirect('Reports.ListView');
 			else
@@ -365,14 +365,15 @@ class UserController extends AppBaseController implements IAuthenticatable
 		{
 			// login failed
 			sleep(2);
-			$this->Redirect('User.LoginForm','Unknown username/password combination');
+//			$this->Redirect('User.LoginForm','Unknown username/password combination');
+			$this->Redirect('User.LoginForm','Combinazione username/password errata');
 		}
 
 	}
 
 
 	/**
-	 * Attempts to authenticate based on the provided username/password. 
+	 * Attempts to authenticate based on the provided username/password.
 	 *
 	 * @param string $username
 	 * @param string $password
@@ -400,15 +401,15 @@ class UserController extends AppBaseController implements IAuthenticatable
 		$ds = $this->Phreezer->Query("Customer", $criteria);
 		$account = $ds->Next();
 
-		
+
 		if ($account && password_verify($password, $account->Password)){
-				
+
 			// ok, we have a customer on board, load default customer user
 			$isCustomer = true;
-				
+
 			// assign customer id to current user vars
 			$this->CustomerId = $account->Id;
-				
+
 			// load default user
 			$criteria = new UserCriteria();
 			$criteria->Id_Equals = self::$DEFAULT_CUSTOMER_USER;
@@ -422,16 +423,16 @@ class UserController extends AppBaseController implements IAuthenticatable
 			unset($account);
 			$criteria = new UserCriteria();
 			$criteria->Username_Equals = $username;
-				
+
 			$ds = $this->Phreezer->Query("User", $criteria);
 			$account = $ds->Next();
-			
-			
+
+
 			// pass default admin password admin123 to allow re-crypt on different crypt algorithm
 			if ($username == 'admin' && $password == 'admin123' && $account->Password == ''){
 				$admin_init = true;
 			}
-			 
+
 		}
 
 
@@ -458,7 +459,7 @@ class UserController extends AppBaseController implements IAuthenticatable
 	public function Logout()
 	{
 		$this->ClearCurrentUser();
-		
+
 		//$this->Redirect("Default.Home");
 		$this->Redirect("User.LoginForm");
 	}
@@ -496,7 +497,7 @@ class UserController extends AppBaseController implements IAuthenticatable
 		if (RequestUtil::Get('password') != ''){
 			$user->Password = password_hash(RequestUtil::Get('password'), PASSWORD_BCRYPT);
 		}
-			
+
 
 		$user->Validate();
 		$errors = $user->GetValidationErrors();
