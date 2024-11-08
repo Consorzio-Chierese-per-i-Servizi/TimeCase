@@ -116,7 +116,8 @@ var page = {
 
 		// init date-pickers
 		$('.date-picker')
-		.datepicker({ format: 'yyyy-mm-dd' })
+		// .datepicker({ format: 'yyyy-mm-dd' })
+		.datepicker({ format: 'dd-mm-yyyy' })
 		.on('changeDate', function(ev){
 			$('.date-picker').datepicker('hide');
 		});
@@ -172,19 +173,55 @@ var page = {
 		});
 
 		// backbone docs recommend bootstrapping data on initial page load, but we live by our own rules!
-		var initStart = $('input#start').val()+' '+$('input#start-time').val();
-		var initEnd = $('input#end').val()+' '+$('input#end-time').val();
+		var timeStartItalian = $('input#start').val();
+		var timeEndItalian = $('input#end').val();
+
+		var arrStart = timeStartItalian.split("-");
+
+		var year = arrStart[2];
+		var month = arrStart[1];
+		var day = arrStart[0];
+		var startFormatted = year + '-' + month + '-' + day;
+
+		var arrEnd = timeEndItalian.split("-");
+
+		year = arrEnd[2];
+		month = arrEnd[1];
+		day = arrEnd[0];
+		var endFormatted = year + '-' + month + '-' + day;
+
+		var initStart = startFormatted +' '+$('input#start-time').val();
+		var initEnd = endFormatted +' '+$('input#end-time').val();
 		this.fetchTimeEntries({ page: 1,  filterByTimeStart: initStart, filterByTimeEnd: initEnd});
 
 	},
 	
 	refreshData: function(getFiltersOnly)
 	{
-		var timeStart = $('input#start').val()+' '+$('input#start-time').val();
+		var timeStartItalian = $('input#start').val();
+		var timeEndItalian = $('input#end').val();
+
+		var arrStart = timeStartItalian.split("-");
+
+		var year = arrStart[2];
+		var month = arrStart[1];
+		var day = arrStart[0];
+		var startFormatted = year + '-' + month + '-' + day;
+
+		var endFormatted = '';
 		if (!$('input#end').val()){
-			$('input#end').val($('input#start').val());
+			endFormatted = startFormatted;
+		} else {
+			var arrEnd = timeEndItalian.split("-");
+
+			year = arrEnd[2];
+			month = arrEnd[1];
+			day = arrEnd[0];
+			endFormatted = year + '-' + month + '-' + day;
 		}
-		var timeEnd = $('input#end').val()+' '+$('input#end-time').val();
+
+		var timeStart = startFormatted +' '+$('input#start-time').val();
+		var timeEnd = endFormatted+' '+$('input#end-time').val();
 		var customerId = $('#customerId').val();
 		var projectId = $('#projectId').val();
 		var userId = $('#userId').val();
