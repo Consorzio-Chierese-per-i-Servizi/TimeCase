@@ -107,6 +107,8 @@ CREATE TABLE IF NOT EXISTS `time_entries` (
   `end` timestamp NULL DEFAULT NULL,
   `description` text NOT NULL,
   `location` varchar(50) DEFAULT NULL,
+  `certificate` int(1) NOT NULL DEFAULT 0,
+  `promoter` varchar(150) NOT NULL DEFAULT '',
   PRIMARY KEY (`id`),
   KEY `project_id` (`project_id`),
   KEY `user_id` (`user_id`),

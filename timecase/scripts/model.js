@@ -450,6 +450,8 @@ model.TimeEntryModel = Backbone.Model.extend({
 	start: '',
 	end: '',
 	description: '',
+	promoter: '',
+	certificate: '',
 	defaults: {
 		'id': null,
 		'projectId': '',
@@ -457,7 +459,9 @@ model.TimeEntryModel = Backbone.Model.extend({
 		'categoryId': '',
 		'start': '',
 		'end': '',
-		'description': ''
+		'description': '',
+		promoter: '',
+		certificate: ''
 	}
 	
 });

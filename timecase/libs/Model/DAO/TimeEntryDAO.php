@@ -32,6 +32,12 @@ class TimeEntryDAO extends Phreezable
 	/** @var timestamp */
 	public $End;
 
+    /** @var string */
+    public $Promoter;
+
+    /** @var int */
+    public $Certificate;
+
 	/** @var string */
 	public $Description;
 	

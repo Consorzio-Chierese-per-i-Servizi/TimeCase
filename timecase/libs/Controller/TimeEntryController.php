@@ -63,7 +63,7 @@ class TimeEntryController extends AppBaseController
 			
 			$filter = RequestUtil::Get('filter');
 			if ($filter) $criteria->AddFilter(
-				new CriteriaFilter('Id,ProjectId,UserId,CategoryId,Start,End,Description'
+				new CriteriaFilter('Id,ProjectId,UserId,CategoryId,Start,End,Description,Promoter,Certificate'
 				, '%'.$filter.'%')
 			);
 
@@ -179,6 +179,8 @@ class TimeEntryController extends AppBaseController
 			$timeentry->ProjectId = $this->SafeGetVal($json, 'projectId');
 			$timeentry->CategoryId = $this->SafeGetVal($json, 'categoryId');
 			$timeentry->Description = $this->SafeGetVal($json, 'description');
+			$timeentry->Promoter = $this->SafeGetVal($json, 'promoter');
+			$timeentry->Certificate = $this->SafeGetVal($json, 'certificate');
 			$timeentry->Location = $_SERVER['REMOTE_ADDR'];
 			
 			if ($this->IsAuthorized(self::$ROLE_ADMIN | self::$ROLE_MANAGER)){
@@ -247,6 +249,8 @@ class TimeEntryController extends AppBaseController
 			$timeentry->ProjectId = $this->SafeGetVal($json, 'projectId', $timeentry->ProjectId);
 			$timeentry->CategoryId = $this->SafeGetVal($json, 'categoryId', $timeentry->CategoryId);
 			$timeentry->Description = $this->SafeGetVal($json, 'description', $timeentry->Description);
+			$timeentry->Promoter = $this->SafeGetVal($json, 'promoter', $timeentry->Promoter);
+			$timeentry->Certificate = $this->SafeGetVal($json, 'certificate', $timeentry->Certificate);
 			$timeentry->Location = $_SERVER['REMOTE_ADDR'];
 			
 			if ($this->IsAuthorized(self::$ROLE_ADMIN | self::$ROLE_MANAGER)){

@@ -184,6 +184,10 @@
 <!--				<th id="header_Description"><i class="icon-reorder"></i>&nbsp; Description<# if (page.orderBy == 'Description') { #> <i class='icon-arrow-<#= page.orderDesc ? 'up' : 'down' #>' /><# } #></th>-->
 				<th id="header_Description"><i class="icon-reorder"></i>&nbsp; Descrizione<# if (page.orderBy ==
                     'Description') { #> <i class='icon-arrow-<#= page.orderDesc ? 'up' : 'down' #>' /><# } #></th>
+                <th id="header_Promoter"><i class="icon-reorder"></i>&nbsp; Organizzatore<# if (page.orderBy ==
+                    'Promoter') { #> <i class='icon-arrow-<#= page.orderDesc ? 'up' : 'down' #>' /><# } #></th>
+                <th id="header_Certificate"><i class="icon-reorder"></i>&nbsp; Attestato<# if (page.orderBy ==
+                    'Certificate') { #> <i class='icon-arrow-<#= page.orderDesc ? 'up' : 'down' #>' /><# } #></th>
 <!--				<th id="header_Duration"><i class="icon-time"></i>&nbsp; Duration<# if (page.orderBy == 'Duration') { #> <i class='icon-arrow-<#= page.orderDesc ? 'up' : 'down' #>' /><# } #></th>-->
 				<th id="header_Duration"><i class="icon-time"></i>&nbsp; Durata<# if (page.orderBy == 'Duration') { #>
                     <i class='icon-arrow-<#= page.orderDesc ? 'up' : 'down' #>' /><# } #></th>
@@ -204,6 +208,8 @@
 				<td><#= _.escape(item.get('userName') || '') #></td>
 				<td><#= _.escape(item.get('categoryName') || '') #></td>
 				<td><#= _.escape(item.get('description') || '') #></td>
+                <td><#= _.escape(item.get('promoter') || '') #></td>
+                <td><#= item.get('certificate') == 1 ? 'Sì' : 'No' #></td>
 				<td class="rtext"><#= _.escape(item.get('durationFormatted') || '') #></td>
 <!-- UNCOMMENT TO SHOW ADDITIONAL COLUMNS
 				<td><#= _.escape(item.get('customerName') || '') #></td>
@@ -317,6 +323,27 @@
 						<span class="help-inline"></span>
 					</div>
 				</div>
+                <div id="promoterInputContainer" class="control-group">
+                    <label class="control-label" for="promoter">Organizzatore</label>
+                    <div class="controls inline-inputs">
+                        <input id="promoter" class="input-xlarge" type="text" value="<#= _.escape(item.get('promoter')
+                         || '') #>"/>
+                        <span class="help-inline"></span>
+                    </div>
+                </div>
+                <div id="certificateInputContainer" class="control-group">
+                    <label class="control-label" for="certificate">Attestato</label>
+                    <div class="controls inline-inputs">
+                        <div class="btn-group">
+                            <button class="btn checkbox <#= _.escape((item.get('certificate') == 1 ? 'active' : ''))
+                            #>">S&igrave;</button>
+                            <input style="display:none" type="checkbox" id="certificate" value="<#= _.escape((item
+                            .get('certificate') == 1 ? '1' : '0')) #>" <#= _.escape((item.get('certificate') == 1 ? 'checked="checked"' : '')) #>>
+                            <button class="btn checkbox <#= _.escape((item.get('certificate') == 1 ? '' : 'active')) #>">No</button>
+                        </div>
+                        <span class="help-inline"></span>
+                    </div>
+                </div>
 				<div id="descriptionInputContainer" class="control-group">
 <!--					<label class="control-label" for="description">Description</label>-->
 					<label class="control-label" for="description">Descrizione</label>

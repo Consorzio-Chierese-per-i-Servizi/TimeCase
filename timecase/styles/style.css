@@ -13,6 +13,12 @@
 }
 }
 
+@media (min-width :771px) {
+	#timeEntryDetailDialog .modal-body {
+		max-height: 525px !important;
+	}
+}
+
 .collectionContainer{
 	overflow: hidden;
 }

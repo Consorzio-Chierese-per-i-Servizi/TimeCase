@@ -946,7 +946,9 @@ var page = {
 			'categoryId': $('select#categoryId').val(),
 			'start': startFormatted +' '+$('input#start-time').val(),
 			'end': endFormatted +' '+$('input#end-time').val(),
-			'description': $('textarea#description').val()
+			'description': $('textarea#description').val(),
+			'certificate': $('input#certificate').val(),
+			'promoter': $('input#promoter').val()
 		}, {
 			wait: true,
 			success: function(){
