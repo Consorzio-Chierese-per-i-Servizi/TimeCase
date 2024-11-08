@@ -369,6 +369,8 @@ class ReportsController extends AppBaseController
 					'User' => $row->userName,
 					'Work Type' => $row->categoryName,
 					'Description' => $row->description,
+					'Promoter' => $row->promoter,
+					'Certificate' => $row->certificate,
 					'Location' => $row->location,
 					'Start' => $row->start,
 					'End' => $row->end,

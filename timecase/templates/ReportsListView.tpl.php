@@ -18,6 +18,8 @@
 	.script("scripts/app/reports.js").wait()
 	.script("scripts/timecase.js").wait()
 	.script("scripts/app/reports.js").wait(function(){
+        // Mesi in italiano nel report
+        _date.monthsShort = ["Gen","Feb","Mar","Apr","Mag","Giu","Lug","Ago","Set","Ott","Nov","Dic"];
 		$(document).ready(function(){
 			page.init();
 		});
@@ -167,12 +169,16 @@
 <!--				<th id="header_Description">Description<# if (page.orderBy == 'Description') { #> <i class='icon-arrow-<#= page.orderDesc ? 'up' : 'down' #>' /><# } #></th>-->
 				<th id="header_Description">Descrizione<# if (page.orderBy == 'Description') { #> <i
                             class='icon-arrow-<#= page.orderDesc ? 'up' : 'down' #>' /><# } #></th>
+                <th id="header_Promoter">Organizzatore<# if (page.orderBy == 'Promoter') { #> <i
+                            class='icon-arrow-<#= page.orderDesc ? 'up' : 'down' #>' /><# } #></th>
 <!--				<th id="header_Start">Start<# if (page.orderBy == 'Start') { #> <i class='icon-arrow-<#= page.orderDesc ? 'up' : 'down' #>' /><# } #></th>-->
 				<th id="header_Start">Dal<# if (page.orderBy == 'Start') { #> <i class='icon-arrow-<#= page.orderDesc ?
 'up' : 'down' #>' /><# } #></th>
 <!--				<th id="header_End">End<# if (page.orderBy == 'End') { #> <i class='icon-arrow-<#= page.orderDesc ? 'up' : 'down' #>' /><# } #></th>-->
 				<th id="header_End">Al<# if (page.orderBy == 'End') { #> <i class='icon-arrow-<#= page.orderDesc ?
 'up' : 'down' #>' /><# } #></th>
+                <th id="header_Certificate">Attestato<# if (page.orderBy == 'Certificate') { #> <i
+                            class='icon-arrow-<#= page.orderDesc ? 'up' : 'down' #>' /><# } #></th>
 <!--				<th id="header_Duration">Duration</th>-->
 				<th id="header_Duration">Durata</th>
 			</tr>
@@ -185,8 +191,12 @@
 				<td><#= _.escape(item.get('userName') || '') #></td>
 				<td><#= _.escape(item.get('categoryName') || '') #></td>
 				<td><#= _.escape(item.get('description') || '') #></td>
-				<td><#if (item.get('start')) { #><#= _date(app.parseDate(item.get('start'))).format('MMM D, H:mm') #><# } else { #>NULL<# } #></td>
-				<td><#if (item.get('end')) { #><#= _date(app.parseDate(item.get('end'))).format('MMM D, H:mm') #><# } else { #>NULL<# } #></td>
+				<td><#= _.escape(item.get('promoter') || '') #></td>
+				<td><#if (item.get('start')) { #><#= _date(app.parseDate(item.get('start'))).format('D MMM, H:mm') #><#
+                    } else { #>NULL<# } #></td>
+				<td><#if (item.get('end')) { #><#= _date(app.parseDate(item.get('end'))).format('D MMM, H:mm') #><# }
+                    else { #>NULL<# } #></td>
+                <td><#= item.get('certificate') == 1 ? 'Sì' : 'No' #></td>
 				<td class="rtext"><#= _.escape(item.get('durationFormatted') || '') #></td>
 			</tr>
 		<# }); #>

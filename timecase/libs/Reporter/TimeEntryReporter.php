@@ -38,6 +38,7 @@ class TimeEntryReporter extends Reporter
 	public $End;
 	public $Description;
 	public $Promoter;
+	public $Certificate;
 
 	/*
 	* GetCustomQuery returns a fully formed SQL statement.  The result columns
