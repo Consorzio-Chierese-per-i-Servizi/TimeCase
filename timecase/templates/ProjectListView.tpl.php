@@ -32,7 +32,8 @@
 	<div class="modal-header">
 		<a class="close" data-dismiss="modal">&times;</a>
 		<h3>
-			<i class="icon-edit"></i> Project
+<!--			<i class="icon-edit"></i> Project-->
+			<i class="icon-edit"></i> Finestra di monitoraggio
 			<span id="modelLoader" class="loader progress progress-striped active"><span class="bar"></span></span>
 		</h3>
 	</div>
@@ -41,8 +42,10 @@
 		<div id="projectModelContainer"></div>
 	</div>
 	<div class="modal-footer">
-		<button class="btn" data-dismiss="modal" >Cancel</button>
-		<button id="saveProjectButton" class="btn btn-primary">Save Changes</button>
+<!--		<button class="btn" data-dismiss="modal" >Cancel</button>-->
+		<button class="btn" data-dismiss="modal" >Annulla</button>
+<!--		<button id="saveProjectButton" class="btn btn-primary">Save Changes</button>-->
+		<button id="saveProjectButton" class="btn btn-primary">Salva</button>
 	</div>
 </div>
 
@@ -53,7 +56,10 @@
 
 	<hr>
 	<p id="newButtonContainer" class="buttonContainer">
-		<button id="newProjectButton" class="btn btn-primary btn-sidebar"><i class="icon-plus"></i>&nbsp; Add Project</button>
+<!--		<button id="newProjectButton" class="btn btn-primary btn-sidebar"><i class="icon-plus"></i>&nbsp; Add Project</button>-->
+		<button id="newProjectButton" class="btn btn-primary btn-sidebar"><i class="icon-plus"></i>&nbsp; Nuova
+            Finestra di Monitoraggio
+        </button>
 	</p>
 	<hr>
 
@@ -83,12 +89,16 @@
 <!-- UNCOMMENT TO SHOW ADDITIONAL COLUMNS
 				<th id="header_Id">Id<# if (page.orderBy == 'Id') { #> <i class='icon-arrow-<#= page.orderDesc ? 'up' : 'down' #>' /><# } #></th>
 -->
-				<th id="header_Title"><i class="icon-reorder"></i>&nbsp; Title<# if (page.orderBy == 'Title') { #> <i class='icon-arrow-<#= page.orderDesc ? 'up' : 'down' #>' /><# } #></th>
+<!--				<th id="header_Title"><i class="icon-reorder"></i>&nbsp; Title<# if (page.orderBy == 'Title') { #> <i class='icon-arrow-<#= page.orderDesc ? 'up' : 'down' #>' /><# } #></th>-->
+				<th id="header_Title"><i class="icon-reorder"></i>&nbsp; Finestra di monitoraggio<# if (page.orderBy ==
+                    'Title') { #> <i class='icon-arrow-<#= page.orderDesc ? 'up' : 'down' #>' /><# } #></th>
 <!--				<th id="header_CustomerId"><i class="icon-group"></i>&nbsp; Customer<# if (page.orderBy == 'CustomerId') { #> <i class='icon-arrow-<#= page.orderDesc ? 'up' : 'down' #>' /><# } #></th>-->
-				<th id="header_Deadline"><i class="icon-warning-sign"></i>&nbsp; Deadline Date<# if (page.orderBy == 'Deadline') { #> <i class='icon-arrow-<#= page.orderDesc ? 'up' : 'down' #>' /><# } #></th>
-				<th><i class="icon-warning-sign"></i>&nbsp; Deadline<# if (page.orderBy == 'DeadlineApproach') { #> <i class='icon-arrow-<#= page.orderDesc ? 'up' : 'down' #>' /><# } #></th>
-				<th id="header_Progress"><i class="icon-signal"></i>&nbsp; Progress<# if (page.orderBy == 'Progress') { #> <i class='icon-arrow-<#= page.orderDesc ? 'up' : 'down' #>' /><# } #></th>
-				<th id="header_StatusId"><i class="icon-info-sign"></i>&nbsp; Status<# if (page.orderBy == 'StatusId') { #> <i class='icon-arrow-<#= page.orderDesc ? 'up' : 'down' #>' /><# } #></th>
+<!--				<th id="header_Deadline"><i class="icon-warning-sign"></i>&nbsp; Deadline Date<# if (page.orderBy == 'Deadline') { #> <i class='icon-arrow-<#= page.orderDesc ? 'up' : 'down' #>' /><# } #></th>-->
+<!--				<th><i class="icon-warning-sign"></i>&nbsp; Deadline<# if (page.orderBy == 'DeadlineApproach') { #> <i class='icon-arrow-<#= page.orderDesc ? 'up' : 'down' #>' /><# } #></th>-->
+<!--				<th id="header_Progress"><i class="icon-signal"></i>&nbsp; Progress<# if (page.orderBy == 'Progress') { #> <i class='icon-arrow-<#= page.orderDesc ? 'up' : 'down' #>' /><# } #></th>-->
+<!--				<th id="header_StatusId"><i class="icon-info-sign"></i>&nbsp; Status<# if (page.orderBy == 'StatusId') { #> <i class='icon-arrow-<#= page.orderDesc ? 'up' : 'down' #>' /><# } #></th>-->
+				<th id="header_StatusId"><i class="icon-info-sign"></i>&nbsp; Stato<# if (page.orderBy == 'StatusId') {
+                    #> <i class='icon-arrow-<#= page.orderDesc ? 'up' : 'down' #>' /><# } #></th>
 <!-- UNCOMMENT TO SHOW ADDITIONAL COLUMNS
 				<th id="header_Created"><i class="icon-reorder"></i>&nbsp; Created<# if (page.orderBy == 'Created') { #> <i class='icon-arrow-<#= page.orderDesc ? 'up' : 'down' #>' /><# } #></th>
 				<th id="header_Closed"><i class="icon-reorder"></i>&nbsp; Closed<# if (page.orderBy == 'Closed') { #> <i class='icon-arrow-<#= page.orderDesc ? 'up' : 'down' #>' /><# } #></th>
@@ -104,9 +114,9 @@
 -->
 				<td><#= _.escape(item.get('title') || '') #></td>
 <!--				<td><#= _.escape(item.get('customerName') || '') #></td>-->
-				<td><#if (item.get('deadline')) { #><#= _date(app.parseDate(item.get('deadline'))).format('MMM D, YYYY H:mm') #><# } else { #>NULL<# } #></td>
-				<td><div class="progress progress-striped"><div class="bar" style="width: <#= _.escape(item.get('deadlineApproach') || '') #>%;"></div></div></td>
-				<td><div class="progress progress-striped"><div class="bar" style="width: <#= _.escape(item.get('progress') || '') #>%;"></div></div></td>
+<!--				<td><#if (item.get('deadline')) { #><#= _date(app.parseDate(item.get('deadline'))).format('MMM D, YYYY H:mm') #><# } else { #>NULL<# } #></td>-->
+<!--				<td><div class="progress progress-striped"><div class="bar" style="width: <#= _.escape(item.get('deadlineApproach') || '') #>%;"></div></div></td>-->
+<!--				<td><div class="progress progress-striped"><div class="bar" style="width: <#= _.escape(item.get('progress') || '') #>%;"></div></div></td>-->
 				<td><#= _.escape(item.get('statusDescription') || '') #></td>
 <!-- UNCOMMENT TO SHOW ADDITIONAL COLUMNS
 				<td><#if (item.get('created')) { #><#= _date(app.parseDate(item.get('created'))).format('MMM D, YYYY H:mm') #><# } else { #>NULL<# } #></td>
@@ -133,14 +143,16 @@
 					</div>
 				</div>
 				<div id="titleInputContainer" class="control-group">
-					<label class="control-label" for="title">Title</label>
+<!--					<label class="control-label" for="title">Title</label>-->
+					<label class="control-label" for="title">Titolo</label>
 					<div class="controls inline-inputs">
 						<input type="text" class="input-xlarge" id="title" placeholder="Title" value="<#= _.escape(item.get('title') || '') #>">
 						<span class="help-inline"></span>
 					</div>
 				</div>
 				<div id="statusIdInputContainer" class="control-group">
-					<label class="control-label" for="statusId">Status</label>
+<!--					<label class="control-label" for="statusId">Status</label>-->
+					<label class="control-label" for="statusId">Stato</label>
 					<div class="controls inline-inputs">
 						<select id="statusId" name="statusId"></select>
 						<span class="help-inline"></span>
@@ -153,7 +165,7 @@
 						<span class="help-inline"></span>
 					</div>
 				</div>
-				<div id="createdInputContainer" class="control-group">
+				<div id="createdInputContainer" class="control-group" style="display: none;">
 					<label class="control-label" for="created">Created</label>
 					<div class="controls inline-inputs">
 						<input type="text" class="date-picker input-xlarge" id="created" value="<#= _date(app.parseDate(item.get('created'))).format('YYYY-MM-DD') #>">
@@ -161,7 +173,7 @@
 						<span class="help-inline"></span>
 					</div>
 				</div>
-				<div id="deadlineInputContainer" class="control-group">
+				<div id="deadlineInputContainer" class="control-group" style="display: none;">
 					<label class="control-label" for="deadline">Deadline</label>
 					<div class="controls inline-inputs">
 						<input type="text" class="date-picker input-xlarge" id="deadline" value="<#= _date(app.parseDate(item.get('deadline'))).format('YYYY-MM-DD') #>">
@@ -177,14 +189,14 @@
 						<span class="help-inline"></span>
 					</div>
 				</div>
-				<div id="progressInputContainer" class="control-group">
+				<div id="progressInputContainer" class="control-group" style="display: none;">
 					<label class="control-label" for="progress">Progress %</label>
 					<div class="controls inline-inputs">
 						<input type="text" class="input-mini" id="progress" placeholder="Progress" value="<#= _.escape(item.get('progress') || '') #>">
 						<span class="help-inline"></span>
 					</div>
 				</div>
-				<div id="descriptionInputContainer" class="control-group">
+				<div id="descriptionInputContainer" class="control-group" style="display: none;">
 					<label class="control-label" for="description">Description</label>
 					<div class="controls inline-inputs">
 						<textarea class="input-xlarge" id="description" rows="3"><#= _.escape(item.get('description') || '') #></textarea>
@@ -200,10 +212,14 @@
 				<div class="control-group">
 					<label class="control-label"></label>
 					<div class="controls">
-						<button id="deleteProjectButton" class="btn btn-mini btn-danger"><i class="icon-trash icon-white"></i> Delete Project</button>
+<!--						<button id="deleteProjectButton" class="btn btn-mini btn-danger"><i class="icon-trash icon-white"></i> Delete Project</button>-->
+						<button id="deleteProjectButton" class="btn btn-mini btn-danger"><i class="icon-trash
+						icon-white"></i> Cancella programma</button>
 						<span id="confirmDeleteProjectContainer" class="hide">
-							<button id="cancelDeleteProjectButton" class="btn btn-mini">Cancel</button>
-							<button id="confirmDeleteProjectButton" class="btn btn-mini btn-danger">Confirm</button>
+<!--							<button id="cancelDeleteProjectButton" class="btn btn-mini">Cancel</button>-->
+							<button id="cancelDeleteProjectButton" class="btn btn-mini">Annulla</button>
+<!--							<button id="confirmDeleteProjectButton" class="btn btn-mini btn-danger">Confirm</button>-->
+							<button id="confirmDeleteProjectButton" class="btn btn-mini btn-danger">Conferma</button>
 						</span>
 					</div>
 				</div>

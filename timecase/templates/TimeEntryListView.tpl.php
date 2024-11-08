@@ -111,7 +111,7 @@
 	<p id="newButtonContainer" class="buttonContainer">
 <!--		<button id="newTimeEntryButton" class="btn btn-primary btn-sidebar"><i class="icon-plus"></i>&nbsp; Add Time Entry</button>-->
 		<button id="newTimeEntryButton" class="btn btn-primary btn-sidebar"><i class="icon-plus"></i>&nbsp;
-            Aggiungi Registrazione</button>
+            Nuova Registrazione</button>
 	</p>
 	<?php endif;?>
 

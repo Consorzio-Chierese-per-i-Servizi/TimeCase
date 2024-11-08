@@ -351,7 +351,8 @@ var page = {
 			wait: true,
 			success: function(){
 				$('#projectDetailDialog').modal('hide');
-				setTimeout("app.appendAlert('Project was sucessfully " + (isNew ? "inserted" : "updated") + "','alert-success',3000,'collectionAlert')",500);
+				// setTimeout("app.appendAlert('Project was sucessfully " + (isNew ? "inserted" : "updated") + "','alert-success',3000,'collectionAlert')",500);
+				setTimeout("app.appendAlert('Finestra di monitoraggio " + (isNew ? "inserita" : "aggiornata") + "','alert-success',3000,'collectionAlert')",500);
 				app.hideProgress('modelLoader');
 
 				// if the collection was initally new then we need to add it to the collection now
@@ -401,7 +402,8 @@ var page = {
 			wait: true,
 			success: function(){
 				$('#projectDetailDialog').modal('hide');
-				setTimeout("app.appendAlert('The Project record was deleted','alert-success',3000,'collectionAlert')",500);
+				// setTimeout("app.appendAlert('The Project record was deleted','alert-success',3000,'collectionAlert')",500);
+				setTimeout("app.appendAlert('Finestra di monitoraggio cancellata','alert-success',3000,'collectionAlert')",500);
 				app.hideProgress('modelLoader');
 
 				if (model.reloadCollectionOnModelUpdate)
