@@ -91,9 +91,11 @@ CREATE TABLE IF NOT EXISTS `statuses` (
 
 
 INSERT INTO `statuses` (`id`, `description`) VALUES
-	(1, 'important'),
-	(2, 'active'),
-	(3, 'closed');
+-- 	(1, 'important'),
+-- 	(2, 'active'),
+-- 	(3, 'closed');
+	(2, 'attivo'),
+	(3, 'chiuso');
 
 DROP TABLE IF EXISTS `time_entries`;
 CREATE TABLE IF NOT EXISTS `time_entries` (

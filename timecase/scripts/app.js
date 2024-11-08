@@ -179,17 +179,12 @@ var app = {
 	},
 
     getDateForPicker: function (item, isStart, isTime) {
-        console.error('getDateForPicker');
         var isEdit = !!item.get('id');
-        console.log('start? ' + isStart + ' - isEdit? ' + isEdit);
 
         if (isStart || isEdit) {
-            console.error('>> return true hours');
-            console.log(_date(app.parseDate(item.get(isStart ? 'start' : 'end'))).format(isTime ? 'H:mm' : 'DD-MM-YY'));
             return _date(app.parseDate(item.get(isStart ? 'start' : 'end'))).format(isTime ? 'H:mm' : 'DD-MM-YY');
         }
 
-        console.error('>> return advanced hours');
         return _date(app.parseDate(item.get(isStart ? 'start' : 'end'))).add({ h: 1 } ).format(isTime ? 'H:mm' : 'DD-MM-YY');
     },
 
