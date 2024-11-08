@@ -29,10 +29,15 @@ class TimeEntry extends TimeEntryDAO
 		
 		// do not accept negative durations
 		if ((strtotime($this->End) - strtotime($this->Start)) < 0){
-			$this->AddValidationError('End', 'Please select correct time duration');
+//			$this->AddValidationError('End', 'Please select correct time duration');
+			$this->AddValidationError('End', 'Impostare una durata corretta');
 			$this->AddValidationError('Start', '');
 		}
-		
+
+        if(empty($this->Description)) {
+            $this->AddValidationError('Description', 'Inserire la descrizione dell\'attivit&agrave;');
+        }
+
 		// if validation fails, remove this object from the cache otherwise invalid values can
 		// hang around and cause troubles.
 		if (!$is_valid)

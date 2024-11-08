@@ -15,14 +15,15 @@ CREATE TABLE IF NOT EXISTS `categories` (
 ) AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
 
 INSERT INTO `categories` (`id`, `name`) VALUES
-	(1, 'planning'),
-	(2, 'developement'),
-	(3, 'testing'),
-	(4, 'communication'),
-	(5, 'team management'),
-	(6, 'design'),
-	(7, 'integration'),
-	(8, 'implementation');
+	(1, 'formazione');
+-- 	(1, 'planning'),
+-- 	(2, 'developement'),
+-- 	(3, 'testing'),
+-- 	(4, 'communication'),
+-- 	(5, 'team management'),
+-- 	(6, 'design'),
+-- 	(7, 'integration'),
+-- 	(8, 'implementation');
 
 DROP TABLE IF EXISTS `customers`;
 CREATE TABLE IF NOT EXISTS `customers` (

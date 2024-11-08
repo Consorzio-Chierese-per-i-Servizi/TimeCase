@@ -15,10 +15,14 @@ function getDateFromInput(dateSelector, timeSelector){
 	if (date_value === undefined || time_value === undefined) return new Date();
 	
 	var arr = date_value.split("-");
-	var year = arr[0];
-	var month = arr[1];
-	var day = arr[2];
-	
+	// var year = arr[0];
+	// var month = arr[1];
+	// var day = arr[2];
+
+    var year = arr[2];
+    var month = arr[1];
+    var day = arr[0];
+
 	var arr = time_value.split(":");
 	var hours = arr[0];
 	var minutes = arr[1];
@@ -106,20 +110,25 @@ function refreshInput(dateSelector, timeSelector, reset){
 		val.ii = (val.i < 10 ? '0' : '') + val.i;
 		val.dd = (val.d < 10 ? '0' : '') + val.d;
 		val.mm = (val.m < 10 ? '0' : '') + val.m;
-		
-	$(dateSelector).val(val.yy + '-' + val.mm + '-' + val.dd);
+
+	// $(dateSelector).val(val.yy + '-' + val.mm + '-' + val.dd);
+	$(dateSelector).val(val.dd + '-' + val.mm + '-' + val.yy);
 	$(timeSelector).val(val.hh + ':' + val.ii);
 	
 	return;
 }
 
-function updateDurationField(){
+function updateDurationField(alignEnd){
 
 	var negative = '';
 	
 	refreshInput('input#start', 'input#start-time');
-	refreshInput('input#end', 'input#end-time');
-	
+    if(alignEnd) {
+        $('input#end').val($('input#start').val());
+    } else {
+        refreshInput('input#end', 'input#end-time');
+    }
+
 	var date_start = getDateFromInput('input#start', 'input#start-time');
 	var date_end = getDateFromInput('input#end', 'input#end-time');
 	
@@ -630,17 +639,17 @@ var page = {
 		try {
 			
 			$('.date-picker')
-				.datepicker({ format: 'yy-mm-dd' })
+				.datepicker({ format: 'dd-mm-yy', weekStart: 1 })
 				.on('changeDate', function(ev){
 					$('.date-picker').datepicker('hide');
-					
-					updateDurationField();
+					updateDurationField(this.id == 'start');
 				});
 			
 			
 			// update duration on time change
-			$(".date-picker, .time-picker").change(function(e) {
-				updateDurationField();
+			// $(".date-picker, .time-picker").change(function(e) {
+			$(".time-picker").change(function(e) {
+                updateDurationField();
 			});
 			
 			
@@ -685,8 +694,9 @@ var page = {
 					val.ii = (val.i < 10 ? '0' : '') + val.i;
 					val.dd = (val.d < 10 ? '0' : '') + val.d;
 					val.mm = (val.m < 10 ? '0' : '') + val.m;
-					
-				$('input#' + input_object).val(val.yy + '-' + val.mm + '-' + val.dd);
+
+				// $('input#' + input_object).val(val.yy + '-' + val.mm + '-' + val.dd);
+				$('input#' + input_object).val(val.dd + '-' + val.mm + '-' + val.yy);
 				$('input#' + input_object + '-time').val(val.hh + ':' + val.ii);
 				
 				updateDurationField();
@@ -911,19 +921,38 @@ var page = {
 
 		app.showProgress('modelLoader');
 
+        // Convert dates from italian format to mysql
+        var startDate = $('input#start').val();
+        var endDate = $('input#end').val();
+
+        var arrStart = startDate.split("-");
+
+        var year = arrStart[2];
+        var month = arrStart[1];
+        var day = arrStart[0];
+        var startFormatted = year + '-' + month + '-' + day;
+
+        var arrEnd = endDate.split("-");
+
+        year = arrEnd[2];
+        month = arrEnd[1];
+        day = arrEnd[0];
+        var endFormatted = year + '-' + month + '-' + day;
+
 		page.timeEntry.save({
 
 			'projectId': $('select#projectId').val(),
 			'userId': $('select#userId').val(),
 			'categoryId': $('select#categoryId').val(),
-			'start': $('input#start').val()+' '+$('input#start-time').val(),
-			'end': $('input#end').val()+' '+$('input#end-time').val(),
+			'start': startFormatted +' '+$('input#start-time').val(),
+			'end': endFormatted +' '+$('input#end-time').val(),
 			'description': $('textarea#description').val()
 		}, {
 			wait: true,
 			success: function(){
 				$('#timeEntryDetailDialog').modal('hide');
-				setTimeout("app.appendAlert('TimeEntry was sucessfully " + (isNew ? "inserted" : "updated") + "','alert-success',3000,'collectionAlert')",500);
+				// setTimeout("app.appendAlert('TimeEntry was sucessfully " + (isNew ? "inserted" : "updated") + "','alert-success',3000,'collectionAlert')",500);
+				setTimeout("app.appendAlert('La Registrazione è stata " + (isNew ? "inserita" : "aggiornata") + "','alert-success',3000,'collectionAlert')",500);
 				app.hideProgress('modelLoader');
 
 				// if the collection was initally new then we need to add it to the collection now
@@ -1031,7 +1060,8 @@ var page = {
 			wait: true,
 			success: function(){
 				$('#timeEntryDetailDialog').modal('hide');
-				setTimeout("app.appendAlert('The TimeEntry record was deleted','alert-success',3000,'collectionAlert')",500);
+				// setTimeout("app.appendAlert('The TimeEntry record was deleted','alert-success',3000,'collectionAlert')",500);
+				setTimeout("app.appendAlert('La Registrazione è stata cancellata','alert-success',3000,'collectionAlert')",500);
 				app.hideProgress('modelLoader');
 
 				if (model.reloadCollectionOnModelUpdate)

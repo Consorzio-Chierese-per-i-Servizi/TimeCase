@@ -413,20 +413,24 @@ abstract class Phreezable implements Serializable
 						case FM_TYPE_DECIMAL:
 							if (!is_numeric($this->$prop) && ($fm->DefaultValue === null && $this->$prop !== null))
 							{
-								$this->AddValidationError($prop,"This is not valid value");
+//								$this->AddValidationError($prop,"This is not valid value");
+								$this->AddValidationError($prop,"Valore non valido");
 							}
 							break;
 						case FM_TYPE_DATE:
 						case FM_TYPE_DATETIME:
 							if (strtotime($this->$prop) === '')
 							{
-								$this->AddValidationError($prop,"This is not a valid date/time value.");
+//								$this->AddValidationError($prop,"This is not a valid date/time value.");
+								$this->AddValidationError($prop,"Data/ora non valido.");
 							}
 							break;
 						case FM_TYPE_ENUM:
 							if ( !in_array($this->$prop, $fm->GetEnumValues()) )
 							{
-								$this->AddValidationError($prop,"This is not valid value. Allowed values: " . implode(', ',$fm->GetEnumValues()) );
+//								$this->AddValidationError($prop,"This is not valid value. Allowed values: " . implode(', ',$fm->GetEnumValues()) );
+								$this->AddValidationError($prop,"Valore non valido. Valori consentiti: " . implode(', ',
+                                        $fm->GetEnumValues()) );
 							}
 							break;
 						default:

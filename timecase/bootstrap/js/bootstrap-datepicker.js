@@ -34,8 +34,10 @@
 		var that = this;
 
 		this.element = $(element);
-		this.language = options.language||this.element.data('date-language')||"en";
-		this.language = this.language in dates ? this.language : "en";
+		// this.language = options.language||this.element.data('date-language')||"en";
+		this.language = options.language||this.element.data('date-language')||"it";
+		// this.language = this.language in dates ? this.language : "en";
+		this.language = this.language in dates ? this.language : "it";
 		this.format = DPGlobal.parseFormat(options.format||this.element.data('date-format')||'mm/dd/yyyy');
 		this.picker = $(DPGlobal.template)
 							.appendTo('body')
@@ -659,8 +661,20 @@
 			months: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
 			monthsShort: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
 			today: "Today"
-		}
-	}
+		},
+        it: {
+            days: ["Domenica", "Lunedigrave;", "Martedigrave;", "Mercoledigrave;", "Giovedigrave;", "Venerdigrave;", "Sabato", "Domenica"],
+            daysShort: ["Dom", "Lun", "Mar", "Mer", "Gio", "Ven", "Sab", "Dom"],
+            daysMin: ["Do", "Lu", "Ma", "Me", "Gi", "Ve", "Sa", "Do"],
+            // days: ["Lunedigrave;", "Martedigrave;", "Mercoledigrave;", "Giovedigrave;", "Venerdigrave;", "Sabato", "Domenica", "Lunedigrave;"],
+            // daysShort: ["Lun", "Mar", "Mer", "Gio", "Ven", "Sab", "Dom", "Lun"],
+            // daysMin: ["Lu", "Ma", "Me", "Gi", "Ve", "Sa", "Do", "Lu"],
+            months: ["Gennaio", "Febbraio", "Marzo", "Aprile", "Maggio", "Giugno", "Luglio", "Agosto", "Settembre", "Ottobre", "Novembre", "Dicembre"],
+            monthsShort: ["Gen", "Feb", "Mar", "Apr", "Mag", "Giu", "Lug", "Ago", "Set", "Ott", "Nov", "Dic"],
+            today: "Oggi"
+        },
+
+    }
 
 	var DPGlobal = {
 		modes: [

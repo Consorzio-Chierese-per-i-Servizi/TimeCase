@@ -197,7 +197,8 @@ class TimeEntryController extends AppBaseController
 
 			if (count($errors) > 0)
 			{
-				$this->RenderErrorJSON('Please check the form for errors',$errors);
+//				$this->RenderErrorJSON('Please check the form for errors',$errors);
+				$this->RenderErrorJSON('Verificare gli errori',$errors);
 			}
 			else
 			{
@@ -263,7 +264,8 @@ class TimeEntryController extends AppBaseController
 
 			if (count($errors) > 0)
 			{
-				$this->RenderErrorJSON('Please check the form for errors',$errors);
+//				$this->RenderErrorJSON('Please check the form for errors',$errors);
+                $this->RenderErrorJSON('Verificare gli errori',$errors);
 			}
 			else
 			{
@@ -474,7 +476,9 @@ class TimeEntryController extends AppBaseController
 	
 			if (count($errors) > 0)
 			{
-				$this->RenderErrorJSON('Please check the form for errors',$errors);
+//				$this->RenderErrorJSON('Please check the form for errors',$errors);
+                $this->RenderErrorJSON('Verificare gli errori',$errors);
+
 			}
 			else
 			{

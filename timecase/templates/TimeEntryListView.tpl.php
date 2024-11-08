@@ -32,7 +32,8 @@
 	<div class="modal-header">
 		<a class="close" data-dismiss="modal">&times;</a>
 		<h3>
-			<i class="icon-edit"></i> Time Entry
+<!--			<i class="icon-edit"></i> Time Entry-->
+			<i class="icon-edit"></i> Registrazione
 			<span id="modelLoader" class="loader progress progress-striped active"><span class="bar"></span></span>
 		</h3>
 	</div>
@@ -41,9 +42,11 @@
 		<div id="timeEntryModelContainer"></div>
 	</div>
 	<div class="modal-footer">
-		<button class="btn" data-dismiss="modal" >Cancel</button>
+<!--		<button class="btn" data-dismiss="modal" >Cancel</button>-->
+		<button class="btn" data-dismiss="modal" >Annulla</button>
 		<button id="forceTimeEntryStopButton" class="btn btn-warning" data-dismiss="modal" >Stop Timer</button>
-		<button id="saveTimeEntryButton" class="btn btn-primary">Save Changes</button>
+<!--		<button id="saveTimeEntryButton" class="btn btn-primary">Save Changes</button>-->
+		<button id="saveTimeEntryButton" class="btn btn-primary">Salva</button>
 	</div>
 </div>
 
@@ -106,7 +109,9 @@
 
 	<?php if(!($this->currentUser->LevelId & $this->ROLE_BASIC_USER)):?>
 	<p id="newButtonContainer" class="buttonContainer">
-		<button id="newTimeEntryButton" class="btn btn-primary btn-sidebar"><i class="icon-plus"></i>&nbsp; Add Time Entry</button>
+<!--		<button id="newTimeEntryButton" class="btn btn-primary btn-sidebar"><i class="icon-plus"></i>&nbsp; Add Time Entry</button>-->
+		<button id="newTimeEntryButton" class="btn btn-primary btn-sidebar"><i class="icon-plus"></i>&nbsp;
+            Aggiungi Registrazione</button>
 	</p>
 	<?php endif;?>
 
@@ -212,11 +217,15 @@
 					</div>
 				</div>
 				<div id="startInputContainer" class="control-group">
-					<label class="control-label" for="start">Start</label>
+<!--					<label class="control-label" for="start">Start</label>-->
+					<label class="control-label" for="start">Inizio</label>
 					<div class="controls inline-inputs">
 					 <div class="timespan">
-						<input type="text" class="date-picker input-xlarge" id="start" value="<#= _date(app.parseDate(item.get('start'))).format('YY-MM-DD') #>">
-						<input type="text" class="time-picker input-xlarge" id="start-time" value="<#= _date(app.parseDate(item.get('start'))).format('H:mm') #>">
+<!--						<input type="text" class="date-picker input-xlarge" id="start" value="<#= _date(app.parseDate(item.get('start'))).format('YY-MM-DD') #>">-->
+						<input type="text" class="date-picker input-xlarge" id="start" value="<#= app.getDateForPicker
+						(item, true, false) #>">
+						<input type="text" class="time-picker input-xlarge" id="start-time" value="<#= app.getDateForPicker
+						(item, true, true) #>">
 						<span class="quick-times">
 							<span class="start-btns">
 							&nbsp;<i class="icon-sort-up ctrl"></i>&nbsp;
@@ -236,11 +245,15 @@
 					</div>
 				</div>
 				<div id="endInputContainer" class="control-group">
-					<label class="control-label" for="end">End</label>
+<!--					<label class="control-label" for="end">End</label>-->
+					<label class="control-label" for="end">Fine</label>
 					<div class="controls inline-inputs">
 					 <div class="timespan">
-						<input type="text" class="date-picker input-xlarge" id="end" value="<#= _date(app.parseDate(item.get('end'))).format('YY-MM-DD') #>">
-						<input type="text" class="time-picker input-xlarge" id="end-time" value="<#= _date(app.parseDate(item.get('end'))).format('H:mm') #>">
+<!--						<input type="text" class="date-picker input-xlarge" id="end" value="<#= _date(app.parseDate(item.get('end'))).format('YY-MM-DD') #>">-->
+						<input type="text" class="date-picker input-xlarge" id="end" value="<#= app.getDateForPicker
+						(item, false, false) #>">
+						<input type="text" class="time-picker input-xlarge" id="end-time" value="<#= app.getDateForPicker
+						(item, false, true) #>">
 						<span class="quick-times">
 							&nbsp;<i class="icon-sort-down ctrl"></i>&nbsp;
 							 <div class="btn-group">
@@ -255,35 +268,45 @@
 				</div>
 				<hr class="break-hr timer"/>
 				<div id="userIdInputContainer" class="control-group">
-					<label class="control-label" for="userId">User</label>
+<!--					<label class="control-label" for="userId">User</label>-->
+					<label class="control-label" for="userId">Dipendente</label>
 					<div class="controls inline-inputs">
 						<select id="userId" name="userId"></select>
 						<span class="help-inline"></span>
 					</div>
 				</div>
-				<div id="filterCustomerIdTEInputContainer" class="control-group">
+<!--				<div id="filterCustomerIdTEInputContainer" class="control-group">-->
+				<div id="filterCustomerIdTEInputContainer" class="control-group" style="display: none;">
 					<label class="control-label" for="filterCustomerIdTE">Customer Filter</label>
 					<div class="controls inline-inputs">
-						<select id="filterCustomerIdTE" name="filterCustomerIdTE"></select>
+<!--						<select id="filterCustomerIdTE" name="filterCustomerIdTE"></select>-->
+						<select id="filterCustomerIdTE" name="filterCustomerIdTE">
+                            <option value="1" selected>Default Customer</option>
+                        </select>
 						<span class="help-inline"></span>
 					</div>
 				</div>
 				<div id="projectIdInputContainer" class="control-group">
-					<label class="control-label" for="projectId">Project</label>
+<!--					<label class="control-label" for="projectId">Project</label>-->
+					<label class="control-label" for="projectId">Programma</label>
 					<div id="parentProjectIdTE" class="controls inline-inputs">
 						<select id="projectId" name="projectId"></select>
 						<span class="help-inline"></span>
 					</div>
 				</div>
-				<div id="categoryIdInputContainer" class="control-group">
+				<div id="categoryIdInputContainer" class="control-group" style="display: none;">
 					<label class="control-label" for="categoryId">Work Type</label>
 					<div class="controls inline-inputs">
-						<select id="categoryId" name="categoryId"></select>
+<!--						<select id="categoryId" name="categoryId"></select>-->
+                        <select id="categoryId" name="categoryId">
+                            <option value="1" selected>Formazione</option>
+                        </select>
 						<span class="help-inline"></span>
 					</div>
 				</div>
 				<div id="descriptionInputContainer" class="control-group">
-					<label class="control-label" for="description">Description</label>
+<!--					<label class="control-label" for="description">Description</label>-->
+					<label class="control-label" for="description">Descrizione</label>
 					<div class="controls inline-inputs">
 						<textarea class="input-xlarge" id="description" rows="3"><#= _.escape(item.get('description') || '') #></textarea>
 						<span class="help-inline"></span>
@@ -298,10 +321,14 @@
 				<div class="control-group">
 					<label class="control-label"></label>
 					<div class="controls">
-						<button id="deleteTimeEntryButton" class="btn btn-mini btn-danger"><i class="icon-trash icon-white"></i> Delete TimeEntry</button>
+<!--						<button id="deleteTimeEntryButton" class="btn btn-mini btn-danger"><i class="icon-trash icon-white"></i> Delete TimeEntry</button>-->
+						<button id="deleteTimeEntryButton" class="btn btn-mini btn-danger"><i class="icon-trash
+						icon-white"></i> Cancella Registrazione</button>
 						<span id="confirmDeleteTimeEntryContainer" class="hide">
-							<button id="cancelDeleteTimeEntryButton" class="btn btn-mini">Cancel</button>
-							<button id="confirmDeleteTimeEntryButton" class="btn btn-mini btn-danger">Confirm</button>
+<!--							<button id="cancelDeleteTimeEntryButton" class="btn btn-mini">Cancel</button>-->
+							<button id="cancelDeleteTimeEntryButton" class="btn btn-mini">Annulla</button>
+<!--							<button id="confirmDeleteTimeEntryButton" class="btn btn-mini btn-danger">Confirm</button>-->
+							<button id="confirmDeleteTimeEntryButton" class="btn btn-mini btn-danger">Conferma</button>
 						</span>
 					</div>
 				</div>
