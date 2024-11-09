@@ -23,6 +23,7 @@ class TimeEntryReporter extends Reporter
 	// 'CustomFieldExample' is an example that is not part of the `time_entries` table
 	public $CategoryName;
 	public $UserName;
+	public $UserFullName;
 	public $ProjectTitle;
 	public $CustomerId;
 	public $CustomerName;
@@ -64,6 +65,7 @@ class TimeEntryReporter extends Reporter
 			$sql = "select
 			categories.name as CategoryName,
 			users.username as UserName,
+			users.full_name as UserFullName,
 			projects.title as ProjectTitle,
 			customers.id as CustomerId,
 			customers.name as CustomerName,

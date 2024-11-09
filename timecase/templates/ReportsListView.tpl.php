@@ -42,9 +42,11 @@
 	<span id="modelLoader" class="loader progress progress-striped active"><span class="bar"></span></span>
 
 	<span class='filter-button pull-right'>
-	<button class="btn btn-primary showReportButton" data-type="csv"><i class="icon-download"></i>&nbsp; Download CSV</button>
+	<button class="btn btn-primary showReportButton" data-type="xls"><i class="icon-download"></i>&nbsp; Download
+        Excel</button>
+<!--	<button class="btn btn-primary showReportButton" data-type="csv"><i class="icon-download"></i>&nbsp; Download CSV</button>-->
 <!--	<button class="btn btn-primary showReportButton" data-type="html"><i class="icon-file"></i>&nbsp; Show HTML</button>-->
-	<button class="btn btn-primary showReportButton" data-type="html"><i class="icon-file"></i>&nbsp; Vedi HTML</button>
+<!--	<button class="btn btn-primary showReportButton" data-type="html"><i class="icon-file"></i>&nbsp; Vedi HTML</button>-->
 	</span>
 </h1>
 <div class="clearfix"></div>

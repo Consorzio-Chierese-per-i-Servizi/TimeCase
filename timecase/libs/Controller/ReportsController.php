@@ -10,6 +10,7 @@ require_once("Controller/ProjectController.php");
 require_once("Controller/CategoryController.php");
 require_once("Controller/UserController.php");
 require_once("util/common.php");
+require_once("util/SimpleXLSXGen.php");
 
 /**
  * ReportsController is the controller class for all reporting. 
@@ -191,6 +192,10 @@ class ReportsController extends AppBaseController
 			$report_type = $this->GetRouter()->GetUrlParam('type');
 
 			switch ($report_type) {
+                case 'xls':
+                    $this->RenderExcel($this->fixXlsData($output->rows));
+                    break;
+
 				case 'csv':
 					$this->RenderCSV($this->fixData($output->rows));
 					break;
@@ -212,6 +217,18 @@ class ReportsController extends AppBaseController
 			$this->RenderExceptionJSON($ex);
 		}
 	}
+
+    public function RenderExcel($data) {
+        $xlsData = [['Nome corso', 'Organizzatore', 'Partecipante', 'Data', 'Attestato', 'Durata (in ore)']];
+
+        foreach ($data['rows'] as $row) {
+            $xlsData[] = [$row['Nome corso'], $row['Organizzatore'], $row['Partecipante'], $row['Data'], $row['Attestato'], $row['Durata (in ore)']];
+        }
+
+        $xlsData[] = ['<b>Totale</b>', '', '', '', '','<b>'.$data['total'].'</b>'];
+
+        Shuchkin\SimpleXLSXGen::fromArray($xlsData)->downloadAs('report_formazione.xlsx');
+    }
 
 
 	/**
@@ -349,8 +366,48 @@ class ReportsController extends AppBaseController
 			
 		die;
 	}
-	
-	
+
+    /**
+     *
+     * fix data before output
+     */
+    public function fixXlsData($data, $hideCustomers = false) {
+        $rows = array();
+        $total = 0;
+
+        foreach ($data as $row)
+        {
+            $dateStart = $row->start;
+            $dateEnd = $row->end;
+
+            $dateTime1 = new DateTime($dateStart);
+            $dateTime2 = new DateTime($dateEnd);
+
+            // Estrazione della sola data in formato dd-mm-yyyy
+            $dataSolo1 = $dateTime1->format('d-m-Y');
+            $dataSolo2 = $dateTime2->format('d-m-Y');
+
+            $rows[] = array(
+                'Nome corso' => $row->description,
+                'Organizzatore' => $row->promoter,
+                'Partecipante' => $row->userFullName,
+                'Data' => ($dataSolo1 === $dataSolo2) ? $dataSolo1 : "Dal $dataSolo1 al $dataSolo2",
+                'Attestato' => $row->certificate ? 'Sì' : 'No',
+                'Durata (in ore)' => number_format($row->duration / 60, 2));
+
+
+
+            $total += $row->duration;
+        }
+
+        if($hideCustomers){
+            foreach($rows as &$row)
+                unset($row['Customer']);
+        }
+
+        return array('rows' => $rows, 'total' => number_format($total / 60, 2));
+    }
+
 	/**
 	 * 
 	 * fix data before output
