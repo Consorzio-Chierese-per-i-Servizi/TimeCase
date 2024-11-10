@@ -110,10 +110,13 @@
 					<li <?php if ($this->nav=='statuses') { echo 'class="active"'; } ?>><a href="statuses">Statuses</a></li>
 					-->
                     <li <?php if ($this->nav=='users') { echo 'class="active"'; } ?>><a href="users">Utenti</a></li>
+                        <!--
                     <li <?php if ($this->nav=='categories') { echo 'class="active"'; } ?>><a
                                 href="categories">Tipi di registrazione</a></li>
+
                     <li <?php if ($this->nav=='statuses') { echo 'class="active"'; } ?>><a
-                                href="statuses">Stati</a></li>
+                                href="statuses">Status programmi</a></li>
+                                -->
 					</ul>
 					</li>
 					<?php endif;?>
@@ -121,7 +124,8 @@
 					<li class="dropdown">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown"><?php echo ucfirst($this->currentUser->Username)?> <b class="caret"></b></a>
 						<ul class="dropdown-menu">
-						<?php if(!($this->currentUser->LevelId & ($this->ROLE_CUSTOMER))):?>
+						<?php if(false):?>
+						<?php //if(!($this->currentUser->LevelId & ($this->ROLE_CUSTOMER))):?>
 <!--						<li><a href="accountsettings">Account Settings</a></li>-->
 						<li><a href="accountsettings">Impostazioni Account</a></li>
 						<?php endif;?>

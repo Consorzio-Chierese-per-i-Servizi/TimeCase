@@ -64,7 +64,7 @@
 <div class="span10">
 
 	<h1>
-		<i class="icon-info-sign"></i> Statuses
+		<i class="icon-info-sign"></i> Valori status delle finestre di monitoraggio
 		<span id=loader class="loader progress progress-striped active"><span class="bar"></span></span>
 		<span class='input-append pull-right searchContainer'>
 			<input id='filter' type="text" placeholder="Search..." />
