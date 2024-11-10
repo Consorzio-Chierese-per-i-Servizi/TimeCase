@@ -190,7 +190,7 @@
 			<tr id="<#= _.escape(item.get('id')) #>">
 <!--				<td><#= _.escape(item.get('customerName') || '') #></td>-->
 				<td><#= _.escape(item.get('projectTitle') || '') #></td>
-				<td><#= _.escape(item.get('userName') || '') #></td>
+				<td><#= _.escape(item.get('userFullName') || '') #></td>
 				<td><#= _.escape(item.get('categoryName') || '') #></td>
 				<td><#= _.escape(item.get('description') || '') #></td>
 				<td><#= _.escape(item.get('promoter') || '') #></td>

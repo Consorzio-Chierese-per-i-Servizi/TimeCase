@@ -184,6 +184,21 @@ if (!function_exists('password_verify')) {
 	}
 }
 
+if (!function_exists('password_external_verify')) {
+    /**
+     * Verify a password against a hash using a timing attack resistant approach
+     *
+     * @param string $password The password to verify
+     * @param string $hash     The hash to verify against
+     *
+     * @return boolean If the password matches the hash
+     */
+    function password_external_verify($password, $hash) {
+        return md5($password) === $hash;
+    }
+}
+
+
 
 /**
  * Function to make a salt

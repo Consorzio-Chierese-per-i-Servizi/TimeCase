@@ -45,6 +45,8 @@ class UserReporter extends Reporter
 			,`users`.`level_id` as LevelId
 			,`users`.`full_name` as FullName
 			,`users`.`email` as Email
+			,`users`.`external_user` as ExternalUser
+			,`users`.`external_password` as ExternalPassword
 		from `users`
 		inner join levels on levels.id = users.level_id";
 

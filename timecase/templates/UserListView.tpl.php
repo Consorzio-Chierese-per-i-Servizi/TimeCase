@@ -51,11 +51,11 @@
 <div class="row">
 <div class="span2">
 
-	<hr>
-	<p id="newButtonContainer" class="buttonContainer">
-		<button id="newUserButton" class="btn btn-primary btn-sidebar"><i class="icon-plus"></i>&nbsp; Add User</button>
-	</p>
-	<hr>
+<!--	<hr>-->
+<!--	<p id="newButtonContainer" class="buttonContainer">-->
+<!--		<button id="newUserButton" class="btn btn-primary btn-sidebar"><i class="icon-plus"></i>&nbsp; Add User</button>-->
+<!--	</p>-->
+<!--	<hr>-->
 
 <?php $this->display('_SidebarCommon.tpl.php');?>
 
@@ -68,7 +68,8 @@
 		<i class="icon-user"></i> Users
 		<span id=loader class="loader progress progress-striped active"><span class="bar"></span></span>
 		<span class='input-append pull-right searchContainer'>
-			<input id='filter' type="text" placeholder="Search..." />
+<!--			<input id='filter' type="text" placeholder="Search..." />-->
+			<input id='filter' type="text" placeholder="Cerca..." />
 			<button class='btn add-on'><i class="icon-search"></i></button>
 		</span>
 	</h1>

@@ -72,8 +72,8 @@ var page = {
 			// attach click handler to the table rows for editing
 			$('table.collection tbody tr').click(function(e) {
 				e.preventDefault();
-				var m = page.users.get(this.id);
-				page.showDetailDialog(m);
+				// var m = page.users.get(this.id);
+				// page.showDetailDialog(m);
 			});
 
 			// make the headers clickable for sorting

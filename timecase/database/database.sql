@@ -129,6 +129,8 @@ CREATE TABLE IF NOT EXISTS `users` (
   `current_project` int(10) DEFAULT NULL,
   `current_category` int(10) DEFAULT NULL,
   `timer` timestamp NULL DEFAULT NULL,
+  `external_user` int(1) NOT NULL DEFAULT 0,
+  `external_password` varchar(32) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `username` (`username`),
   KEY `level_id` (`level_id`)

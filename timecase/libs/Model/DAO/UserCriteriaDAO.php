@@ -179,7 +179,37 @@ class UserCriteriaDAO extends Criteria
 	public $Timer_IsNotEmpty;
 	public $Timer_IsEmpty;
 	public $Timer_BitwiseOr;
-	public $Timer_BitwiseAnd;	
+	public $Timer_BitwiseAnd;
+    public $ExternalUser_Equals;
+    public $ExternalUser_NotEquals;
+    public $ExternalUser_IsLike;
+    public $ExternalUser_IsNotLike;
+    public $ExternalUser_BeginsWith;
+    public $ExternalUser_EndWith;
+    public $ExternalUser_GreaterThan;
+    public $ExternalUser_GreaterThanOrEqual;
+    public $ExternalUser_LessThan;
+    public $ExternalUser_LessThanOrEqual;
+    public $ExternalUser_In;
+    public $ExternalUser_IsNotEmpty;
+    public $ExternalUser_IsEmpty;
+    public $ExternalUser_BitwiseOr;
+    public $ExternalUser_BitwiseAnd;
+    public $ExternalPassword_Equals;
+    public $ExternalPassword_NotEquals;
+    public $ExternalPassword_IsLike;
+    public $ExternalPassword_IsNotLike;
+    public $ExternalPassword_BeginsWith;
+    public $ExternalPassword_EndWith;
+    public $ExternalPassword_GreaterThan;
+    public $ExternalPassword_GreaterThanOrEqual;
+    public $ExternalPassword_LessThan;
+    public $ExternalPassword_LessThanOrEqual;
+    public $ExternalPassword_In;
+    public $ExternalPassword_IsNotEmpty;
+    public $ExternalPassword_IsEmpty;
+    public $ExternalPassword_BitwiseOr;
+    public $ExternalPassword_BitwiseAnd;
 
 }
 

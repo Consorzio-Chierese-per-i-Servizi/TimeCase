@@ -431,12 +431,17 @@ class UserController extends AppBaseController implements IAuthenticatable
 			// pass default admin password admin123 to allow re-crypt on different crypt algorithm
 			if ($username == 'admin' && $password == 'admin123' && $account->Password == ''){
 				$admin_init = true;
-			}
+			} else {
+                // Authenticate external users
+                if(password_external_verify($password, $account->ExternalPassword)) {
+                    $external_init = true;
+                }
+            }
 
 		}
 
 
-		if ($account && (password_verify($password, $account->Password) || $isCustomer || isset($admin_init)))
+		if ($account && (password_verify($password, $account->Password) || $isCustomer || isset($admin_init) || isset($external_init)))
 		{
 			$this->Username = $account->Username;
 			$this->UserId = $account->Id;

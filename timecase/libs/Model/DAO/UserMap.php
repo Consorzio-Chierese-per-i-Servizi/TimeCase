@@ -36,6 +36,9 @@ class UserMap implements IDaoMap
 			$fm["CurrentProject"] = new FieldMap("CurrentProject","users","current_project",false,FM_TYPE_INT,10,null,true);
 			$fm["CurrentCategory"] = new FieldMap("CurrentCategory","users","current_category",false,FM_TYPE_INT,10,null,true);
 			$fm["Timer"] = new FieldMap("Timer","users","timer",false,FM_TYPE_TIMESTAMP,null,null,false);
+            $fm["ExternalUser"] = new FieldMap("ExternalUser","users","external_user",false,FM_TYPE_INT,1,0,false);
+            $fm["ExternalPassword"] = new FieldMap("ExternalPassword","users","external_password",false,
+                FM_TYPE_VARCHAR,32,null,false);
 		}
 		return $fm;
 	}

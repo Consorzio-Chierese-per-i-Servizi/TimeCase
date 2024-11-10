@@ -44,7 +44,11 @@ class UserDAO extends Phreezable
 	/** @var timestamp */
 	public $Timer;
 
+    /** @var int */
+    public $ExternalUser;
 
+    /** @var string */
+    public $ExternalPassword;
 
 	/**
 	 * Returns a dataset of TimeEntries objects with matching UserId
