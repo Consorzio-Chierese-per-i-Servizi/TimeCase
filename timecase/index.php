@@ -1,5 +1,7 @@
 <?php
 error_reporting(NULL);
+//error_reporting(E_ALL & ~E_DEPRECATED);
+//ini_set('display_errors', 1);
 /** @package    PROJECTS */
 
 /* GlobalConfig object contains all configuration information for the app */

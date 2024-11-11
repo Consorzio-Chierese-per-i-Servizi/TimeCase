@@ -174,11 +174,13 @@
                 <th id="header_Promoter">Organizzatore<# if (page.orderBy == 'Promoter') { #> <i
                             class='icon-arrow-<#= page.orderDesc ? 'up' : 'down' #>' /><# } #></th>
 <!--				<th id="header_Start">Start<# if (page.orderBy == 'Start') { #> <i class='icon-arrow-<#= page.orderDesc ? 'up' : 'down' #>' /><# } #></th>-->
-				<th id="header_Start">Dal<# if (page.orderBy == 'Start') { #> <i class='icon-arrow-<#= page.orderDesc ?
+				<th id="header_Start">Data<# if (page.orderBy == 'Start') { #> <i class='icon-arrow-<#= page.orderDesc ?
 'up' : 'down' #>' /><# } #></th>
 <!--				<th id="header_End">End<# if (page.orderBy == 'End') { #> <i class='icon-arrow-<#= page.orderDesc ? 'up' : 'down' #>' /><# } #></th>-->
+                <!--
 				<th id="header_End">Al<# if (page.orderBy == 'End') { #> <i class='icon-arrow-<#= page.orderDesc ?
 'up' : 'down' #>' /><# } #></th>
+-->
                 <th id="header_Certificate">Attestato<# if (page.orderBy == 'Certificate') { #> <i
                             class='icon-arrow-<#= page.orderDesc ? 'up' : 'down' #>' /><# } #></th>
 <!--				<th id="header_Duration">Duration</th>-->
@@ -194,12 +196,15 @@
 				<td><#= _.escape(item.get('categoryName') || '') #></td>
 				<td><#= _.escape(item.get('description') || '') #></td>
 				<td><#= _.escape(item.get('promoter') || '') #></td>
-				<td><#if (item.get('start')) { #><#= _date(app.parseDate(item.get('start'))).format('D MMM, H:mm') #><#
+				<td><#if (item.get('start')) { #><#= _date(app.parseDate(item.get('start'))).format('DD-MM-YYYY') #><#
                     } else { #>NULL<# } #></td>
+                <!--
 				<td><#if (item.get('end')) { #><#= _date(app.parseDate(item.get('end'))).format('D MMM, H:mm') #><# }
                     else { #>NULL<# } #></td>
+                    -->
                 <td><#= item.get('certificate') == 1 ? 'Sì' : 'No' #></td>
-				<td class="rtext"><#= _.escape(item.get('durationFormatted') || '') #></td>
+<!--				<td class="rtext"><#= _.escape(item.get('durationFormatted') || '') #></td>-->
+				<td class="rtext"><#= _.escape(item.get('explicitDuration') || '') #></td>
 			</tr>
 		<# }); #>
 		</tbody>

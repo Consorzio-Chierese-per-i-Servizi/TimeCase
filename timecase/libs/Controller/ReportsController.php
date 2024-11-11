@@ -159,7 +159,8 @@ class ReportsController extends AppBaseController
 			$criteria->totalDurationOnly = true;
 			$timeentries = $this->Phreezer->Query('TimeEntryReporter',$criteria);
 			$output->rows = $timeentries->ToObjectArray(true, $this->SimpleObjectParams());
-			$output->totalDuration = common::formatDuration($output->rows[0]->duration);
+//			$output->totalDuration = common::formatDuration($output->rows[0]->duration);
+			$output->totalDuration = $output->rows[0]->duration;
 			$criteria->totalDurationOnly = false;
 
 			if ($page != '')
@@ -393,11 +394,14 @@ class ReportsController extends AppBaseController
                 'Partecipante' => $row->userFullName,
                 'Data' => ($dataSolo1 === $dataSolo2) ? $dataSolo1 : "Dal $dataSolo1 al $dataSolo2",
                 'Attestato' => $row->certificate ? 'Sì' : 'No',
-                'Durata (in ore)' => number_format($row->duration / 60, 2));
+                'Durata (in ore)' => $row->explicitDuration);
+//                'Durata (in ore)' => number_format($row->duration / 60, 2));
+//                'Durata (in ore)' => number_format($row->explicitDuration, 2));
 
 
 
-            $total += $row->duration;
+//            $total += $row->duration;
+            $total += floatval($row->explicitDuration);
         }
 
         if($hideCustomers){
@@ -405,7 +409,7 @@ class ReportsController extends AppBaseController
                 unset($row['Customer']);
         }
 
-        return array('rows' => $rows, 'total' => number_format($total / 60, 2));
+        return array('rows' => $rows, 'total' => number_format($total, 2));
     }
 
 	/**

@@ -52,15 +52,20 @@ class TimeEntryReporter extends Reporter
 	static function GetCustomQuery($criteria)
 	{
 		if (isset($criteria->totalDurationOnly) && $criteria->totalDurationOnly == true){
-			
-			$sql = "select sum(TIMESTAMPDIFF(MINUTE, time_entries.start, time_entries.end)) as Duration
+
+//			$sql = "select sum(TIMESTAMPDIFF(MINUTE, time_entries.start, time_entries.end)) as Duration
+//			from `time_entries`
+//			inner join categories on categories.id = time_entries.category_id
+//			inner join users on users.id = time_entries.user_id
+//			inner join projects on projects.id = time_entries.project_id
+//			inner join customers on customers.id = projects.customer_id";
+
+            $sql = "select sum(time_entries.explicit_duration) as Duration
 			from `time_entries`
 			inner join categories on categories.id = time_entries.category_id
 			inner join users on users.id = time_entries.user_id
 			inner join projects on projects.id = time_entries.project_id
 			inner join customers on customers.id = projects.customer_id";
-
-			
 		}else{
 			
 			$sql = "select
