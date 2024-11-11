@@ -182,7 +182,7 @@
                     'CategoryId') {
                     #> <i class='icon-arrow-<#= page.orderDesc ? 'up' : 'down' #>' /><# } #></th>
 <!--				<th id="header_Description"><i class="icon-reorder"></i>&nbsp; Description<# if (page.orderBy == 'Description') { #> <i class='icon-arrow-<#= page.orderDesc ? 'up' : 'down' #>' /><# } #></th>-->
-				<th id="header_Description"><i class="icon-reorder"></i>&nbsp; Descrizione<# if (page.orderBy ==
+				<th id="header_Description"><i class="icon-reorder"></i>&nbsp; Titolo<# if (page.orderBy ==
                     'Description') { #> <i class='icon-arrow-<#= page.orderDesc ? 'up' : 'down' #>' /><# } #></th>
                 <th id="header_Promoter"><i class="icon-reorder"></i>&nbsp; Organizzatore<# if (page.orderBy ==
                     'Promoter') { #> <i class='icon-arrow-<#= page.orderDesc ? 'up' : 'down' #>' /><# } #></th>
@@ -323,6 +323,14 @@
 						<span class="help-inline"></span>
 					</div>
 				</div>
+                <div id="descriptionInputContainer" class="control-group">
+                    <!--					<label class="control-label" for="description">Description</label>-->
+                    <label class="control-label" for="description">Titolo</label>
+                    <div class="controls inline-inputs">
+                        <textarea class="input-xlarge" id="description" rows="3"><#= _.escape(item.get('description') || '') #></textarea>
+                        <span class="help-inline"></span>
+                    </div>
+                </div>
                 <div id="promoterInputContainer" class="control-group">
                     <label class="control-label" for="promoter">Organizzatore</label>
                     <div class="controls inline-inputs">
@@ -344,14 +352,6 @@
                         <span class="help-inline"></span>
                     </div>
                 </div>
-				<div id="descriptionInputContainer" class="control-group">
-<!--					<label class="control-label" for="description">Description</label>-->
-					<label class="control-label" for="description">Descrizione</label>
-					<div class="controls inline-inputs">
-						<textarea class="input-xlarge" id="description" rows="3"><#= _.escape(item.get('description') || '') #></textarea>
-						<span class="help-inline"></span>
-					</div>
-				</div>
 			</fieldset>
 		</form>
 

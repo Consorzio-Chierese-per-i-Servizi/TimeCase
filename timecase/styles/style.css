@@ -181,7 +181,8 @@ footer {
 	min-width: 300px;
 }
 
-#descriptionInputContainer {
+/*#descriptionInputContainer {*/
+#certificateInputContainer {
 	margin: 0;
 }
 

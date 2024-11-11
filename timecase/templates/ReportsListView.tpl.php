@@ -169,7 +169,7 @@
                             class='icon-arrow-<#= page
 				.orderDesc ? 'up' : 'down' #>' /><# } #></th>
 <!--				<th id="header_Description">Description<# if (page.orderBy == 'Description') { #> <i class='icon-arrow-<#= page.orderDesc ? 'up' : 'down' #>' /><# } #></th>-->
-				<th id="header_Description">Descrizione<# if (page.orderBy == 'Description') { #> <i
+				<th id="header_Description">Titolo<# if (page.orderBy == 'Description') { #> <i
                             class='icon-arrow-<#= page.orderDesc ? 'up' : 'down' #>' /><# } #></th>
                 <th id="header_Promoter">Organizzatore<# if (page.orderBy == 'Promoter') { #> <i
                             class='icon-arrow-<#= page.orderDesc ? 'up' : 'down' #>' /><# } #></th>
