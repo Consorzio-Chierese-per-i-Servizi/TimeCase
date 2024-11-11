@@ -42,6 +42,13 @@ class TimeEntry extends TimeEntryDAO
             $this->AddValidationError('Promoter', 'Inserire l\'organizzatore');
         }
 
+        if(empty($this->ExplicitDuration)) {
+            $this->AddValidationError('ExplicitDuration', 'Inserire la durata del corso');
+        }
+        else  if(floatval($this->ExplicitDuration) <= 0) {
+            $this->AddValidationError('ExplicitDuration', 'Inserire una durata corretta');
+        }
+
 		// if validation fails, remove this object from the cache otherwise invalid values can
 		// hang around and cause troubles.
 		if (!$is_valid)

@@ -167,12 +167,12 @@ footer {
 
 	#startInputContainer .control-label,
 	#endInputContainer .control-label {
-		width: 120px
+		/*width: 120px*/
 	}
 	
 	#startInputContainer .controls,
 	#endInputContainer .controls {
-		margin-left: 140px
+		/*margin-left: 140px*/
 	}
 
 }
@@ -204,7 +204,7 @@ footer {
 }
 
 #startInputContainer{
-	margin-bottom: 30px;
+	/*margin-bottom: 30px;*/
 }
 
 #startInputContainer input.date-picker,

@@ -165,7 +165,22 @@ class TimeEntryCriteriaDAO extends Criteria
 	public $Location_IsEmpty;
 	public $Location_BitwiseOr;
 	public $Location_BitwiseAnd;
-	
+    public $ExplicitDuration_Equals;
+    public $ExplicitDuration_NotEquals;
+    public $ExplicitDuration_IsLike;
+    public $ExplicitDuration_IsNotLike;
+    public $ExplicitDuration_BeginsWith;
+    public $ExplicitDuration_EndWith;
+    public $ExplicitDuration_GreaterThan;
+    public $ExplicitDuration_GreaterThanOrEqual;
+    public $ExplicitDuration_LessThan;
+    public $ExplicitDuration_LessThanOrEqual;
+    public $ExplicitDuration_In;
+    public $ExplicitDuration_IsNotEmpty;
+    public $ExplicitDuration_IsEmpty;
+    public $ExplicitDuration_BitwiseOr;
+    public $ExplicitDuration_BitwiseAnd;
+
 	public $Special;
 
 }

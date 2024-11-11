@@ -109,6 +109,7 @@ CREATE TABLE IF NOT EXISTS `time_entries` (
   `location` varchar(50) DEFAULT NULL,
   `certificate` int(1) NOT NULL DEFAULT 0,
   `promoter` varchar(150) NOT NULL DEFAULT '',
+  `explicit_duration` decimal(10,2) NOT NULL DEFAULT 0.00,
   PRIMARY KEY (`id`),
   KEY `project_id` (`project_id`),
   KEY `user_id` (`user_id`),

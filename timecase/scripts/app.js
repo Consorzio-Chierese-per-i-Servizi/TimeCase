@@ -95,6 +95,7 @@ var app = {
 	 * Accept string in the following format: 'YYYY-MM-DD hh:mm:ss' or 'YYYY-MM-DD'
 	 * If a date object is padded in, it will be returned as-is
 	 * @param string | date:
+	 * @param timeToZero boolean if it has to be at midnight
 	 * @param defaultDate if the provided string can't be parsed, return this instead (default is Now)
 	 * @returns Date
 	 */
@@ -181,11 +182,28 @@ var app = {
     getDateForPicker: function (item, isStart, isTime) {
         var isEdit = !!item.get('id');
 
-        if (isStart || isEdit) {
-            return _date(app.parseDate(item.get(isStart ? 'start' : 'end'))).format(isTime ? 'H:mm' : 'DD-MM-YY');
-        }
+		if(isStart) {
+			var startDate = _date(app.parseDate(item.get('start')));
 
-        return _date(app.parseDate(item.get(isStart ? 'start' : 'end'))).add({ h: 1 } ).format(isTime ? 'H:mm' : 'DD-MM-YY');
+			//Always start at midnight (since we're only interested in durations!)
+			startDate.date.setHours(0);
+			startDate.date.setMinutes(0);
+			startDate.date.setSeconds(0);
+			startDate.date.setMilliseconds(0);
+
+			return startDate.format(isTime ? 'H:mm' : 'DD-MM-YY');
+		}
+
+		var endDate = _date(app.parseDate(item.get('end')));
+		if(!isEdit) {
+			// Default 1 hour of duration
+			endDate.date.setHours(1);
+			endDate.date.setMinutes(0);
+			endDate.date.setSeconds(0);
+			endDate.date.setMilliseconds(0);
+		}
+
+        return endDate.format(isTime ? 'H:mm' : 'DD-MM-YY');
     },
 
 	version: 1.1

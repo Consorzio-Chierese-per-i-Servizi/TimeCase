@@ -189,7 +189,10 @@
                 <th id="header_Certificate"><i class="icon-reorder"></i>&nbsp; Attestato<# if (page.orderBy ==
                     'Certificate') { #> <i class='icon-arrow-<#= page.orderDesc ? 'up' : 'down' #>' /><# } #></th>
 <!--				<th id="header_Duration"><i class="icon-time"></i>&nbsp; Duration<# if (page.orderBy == 'Duration') { #> <i class='icon-arrow-<#= page.orderDesc ? 'up' : 'down' #>' /><# } #></th>-->
-				<th id="header_Duration"><i class="icon-time"></i>&nbsp; Durata<# if (page.orderBy == 'Duration') { #>
+<!--				<th id="header_Duration"><i class="icon-time"></i>&nbsp; Durata<# if (page.orderBy == 'Duration') { #>-->
+<!--                    <i class='icon-arrow-<#= page.orderDesc ? 'up' : 'down' #>' /><# } #></th>-->
+                <th id="header_ExplicitDuration"><i class="icon-time"></i>&nbsp; Durata<# if (page.orderBy ==
+                    'ExplicitDuration') { #>
                     <i class='icon-arrow-<#= page.orderDesc ? 'up' : 'down' #>' /><# } #></th>
 <!-- UNCOMMENT TO SHOW ADDITIONAL COLUMNS
 				<th><i class="icon-user"></i>&nbsp; Customer Name</th>
@@ -210,7 +213,8 @@
 				<td><#= _.escape(item.get('description') || '') #></td>
                 <td><#= _.escape(item.get('promoter') || '') #></td>
                 <td><#= item.get('certificate') == 1 ? 'Sì' : 'No' #></td>
-				<td class="rtext"><#= _.escape(item.get('durationFormatted') || '') #></td>
+<!--				<td class="rtext"><#= _.escape(item.get('durationFormatted') || '') #></td>-->
+				<td class="rtext"><#= _.escape(item.get('explicitDuration') || '') #></td>
 <!-- UNCOMMENT TO SHOW ADDITIONAL COLUMNS
 				<td><#= _.escape(item.get('customerName') || '') #></td>
 				<td><#if (item.get('start')) { #><#= _date(app.parseDate(item.get('start'))).format('MMM D, YYYY H:mm') #><# } else { #>NULL<# } #></td>
@@ -237,15 +241,16 @@
 				</div>
 				<div id="startInputContainer" class="control-group">
 <!--					<label class="control-label" for="start">Start</label>-->
-					<label class="control-label" for="start">Inizio</label>
+					<label class="control-label" for="start">Data (fine corso se pi&ugrave giorni)</label>
 					<div class="controls inline-inputs">
-					 <div class="timespan">
+<!--					 <div class="timespan">-->
+					 <div>
 <!--						<input type="text" class="date-picker input-xlarge" id="start" value="<#= _date(app.parseDate(item.get('start'))).format('YY-MM-DD') #>">-->
 						<input type="text" class="date-picker input-xlarge" id="start" value="<#= app.getDateForPicker
 						(item, true, false) #>">
 						<input type="text" class="time-picker input-xlarge" id="start-time" value="<#= app.getDateForPicker
-						(item, true, true) #>">
-						<span class="quick-times">
+						(item, true, true) #>" style="display: none;">
+						<span class="quick-times" style="display: none;">
 							<span class="start-btns">
 							&nbsp;<i class="icon-sort-up ctrl"></i>&nbsp;
 							 <div class="btn-group">
@@ -253,17 +258,14 @@
               			 	  <button class="btn ctrl" data-min="-10" data-obj="start" tabindex="-1">10</button>
               			 	  <button class="btn ctrl" data-min="-15" data-obj="start" tabindex="-1">15</button>
             				 </div>
-							 <span class="duration">
-							 	<span class="label label-info" unselectable="on">00:00</span>
-							 	&nbsp;<i class="icon-repeat restart"></i>
-							 </span>
+
 							</span>
 						</span>
 						<span class="help-inline"></span>
 					 </div>
 					</div>
 				</div>
-				<div id="endInputContainer" class="control-group">
+				<div id="endInputContainer" class="control-group" style="display: none;">
 <!--					<label class="control-label" for="end">End</label>-->
 					<label class="control-label" for="end">Fine</label>
 					<div class="controls inline-inputs">
@@ -280,12 +282,35 @@
               			 	  <button class="btn ctrl" data-min="10" data-obj="end" tabindex="-1">10</button>
               			 	  <button class="btn ctrl" data-min="15" data-obj="end" tabindex="-1">15</button>
             				 </div>
+                            <span class="duration">
+							 	<span class="label label-info" unselectable="on">00:00</span>
+							 	&nbsp;<i class="icon-repeat restart"></i>
+							 </span>
 						</span>
 						<span class="help-inline"></span>
 					 </div>
 					</div>
 				</div>
-				<hr class="break-hr timer"/>
+				<hr class="break-hr timer" style="display: none;"/>
+                <div id="explicitDurationInputContainer" class="control-group">
+                    <label class="control-label" for="explicitDuration">Durata (in ore)</label>
+                    <div class="controls inline-inputs">
+                        <input id="explicitDuration" class="input-xlarge" type="number" min="0" step="0.25"
+                               list="defaultDurations" value="<#= _.escape(item.get('explicitDuration') || '') #>"/>
+                        <datalist id="defaultDurations">
+                            <option value="1"></option>
+                            <option value="1.5"></option>
+                            <option value="2"></option>
+                            <option value="2.5"></option>
+                            <option value="3"></option>
+                            <option value="3.5"></option>
+                            <option value="4"></option>
+                            <option value="5"></option>
+                            <option value="10"></option>
+                        </datalist>
+                        <span class="help-inline"></span>
+                    </div>
+                </div>
 				<div id="userIdInputContainer" class="control-group">
 <!--					<label class="control-label" for="userId">User</label>-->
 					<label class="control-label" for="userId">Dipendente</label>

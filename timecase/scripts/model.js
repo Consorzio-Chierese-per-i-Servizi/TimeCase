@@ -451,6 +451,7 @@ model.TimeEntryModel = Backbone.Model.extend({
 	end: '',
 	description: '',
 	promoter: '',
+	explicitDuration: '',
 	certificate: '',
 	defaults: {
 		'id': null,
@@ -461,6 +462,7 @@ model.TimeEntryModel = Backbone.Model.extend({
 		'end': '',
 		'description': '',
 		promoter: '',
+		explicitDuration: '',
 		certificate: ''
 	}
 	

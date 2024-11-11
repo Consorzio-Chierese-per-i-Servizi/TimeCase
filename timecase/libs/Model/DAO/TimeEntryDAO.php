@@ -43,7 +43,10 @@ class TimeEntryDAO extends Phreezable
 	
 	/** @var string */
 	public $Location;
-	
+
+    /** @var float */
+    public $ExplicitDuration;
+
 
 	/**
 	 * Returns the foreign object based on the value of CategoryId

@@ -34,7 +34,11 @@ function getDateFromInput(dateSelector, timeSelector){
 	if(!(!isNaN(parseFloat(day)) && isFinite(day))) day = d.getDate();
 	if(!(!isNaN(parseFloat(hours)) && isFinite(hours))) hours = 0; //d.getHours();
 	if(!(!isNaN(parseFloat(minutes)) && isFinite(minutes))) minutes = 0; //d.getMinutes();
-	
+
+	//Not allow negative values
+	hours = Math.abs(hours);
+	minutes = Math.abs(minutes);
+
 	var date_return = new Date(year, month - 1, day, hours, minutes, 0);
 	
 	return date_return;	
@@ -644,8 +648,11 @@ var page = {
 					$('.date-picker').datepicker('hide');
 					updateDurationField(this.id == 'start');
 				});
-			
-			
+
+			$('.date-picker').change(function (){
+				updateDurationField(this.id == 'start');
+			});
+
 			// update duration on time change
 			// $(".date-picker, .time-picker").change(function(e) {
 			$(".time-picker").change(function(e) {
@@ -948,7 +955,8 @@ var page = {
 			'end': endFormatted +' '+$('input#end-time').val(),
 			'description': $('textarea#description').val(),
 			'certificate': $('input#certificate').val(),
-			'promoter': $('input#promoter').val()
+			'promoter': $('input#promoter').val(),
+			'explicitDuration': $('input#explicitDuration').val()
 		}, {
 			wait: true,
 			success: function(){
