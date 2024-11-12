@@ -186,7 +186,8 @@
                     'Description') { #> <i class='icon-arrow-<#= page.orderDesc ? 'up' : 'down' #>' /><# } #></th>
                 <th id="header_Promoter"><i class="icon-reorder"></i>&nbsp; Organizzatore<# if (page.orderBy ==
                     'Promoter') { #> <i class='icon-arrow-<#= page.orderDesc ? 'up' : 'down' #>' /><# } #></th>
-                <th id="header_Start"><i class="icon-reorder"></i>&nbsp; Data<# if (page.orderBy ==
+                <th id="header_Start" style="min-width: 70px;"><i class="icon-reorder"></i>&nbsp; Data<# if (page
+                    .orderBy ==
                     'Start') { #> <i class='icon-arrow-<#= page.orderDesc ? 'up' : 'down' #>' /><# } #></th>
                 <th id="header_Certificate"><i class="icon-reorder"></i>&nbsp; Attestato<# if (page.orderBy ==
                     'Certificate') { #> <i class='icon-arrow-<#= page.orderDesc ? 'up' : 'down' #>' /><# } #></th>
