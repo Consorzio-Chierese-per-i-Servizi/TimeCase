@@ -177,7 +177,7 @@
 				<th id="header_UserId"><i class="icon-user"></i>&nbsp; Dipendente<# if (page.orderBy == 'UserId') { #>
                     <i class='icon-arrow-<#= page.orderDesc ? 'up' : 'down' #>' /><# } #></th>
 <!--				<th id="header_CategoryId"><i class="icon-reorder"></i>&nbsp; Work Type<# if (page.orderBy == 'CategoryId') { #> <i class='icon-arrow-<#= page.orderDesc ? 'up' : 'down' #>' /><# } #></th>-->
-				<th id="header_CategoryId"><i class="icon-reorder"></i>&nbsp; Tipologia Registrazione<# if (page.orderBy
+				<th id="header_CategoryId"><i class="icon-reorder"></i>&nbsp; Tipologia<# if (page.orderBy
                     ==
                     'CategoryId') {
                     #> <i class='icon-arrow-<#= page.orderDesc ? 'up' : 'down' #>' /><# } #></th>
@@ -186,6 +186,8 @@
                     'Description') { #> <i class='icon-arrow-<#= page.orderDesc ? 'up' : 'down' #>' /><# } #></th>
                 <th id="header_Promoter"><i class="icon-reorder"></i>&nbsp; Organizzatore<# if (page.orderBy ==
                     'Promoter') { #> <i class='icon-arrow-<#= page.orderDesc ? 'up' : 'down' #>' /><# } #></th>
+                <th id="header_Start"><i class="icon-reorder"></i>&nbsp; Data<# if (page.orderBy ==
+                    'Start') { #> <i class='icon-arrow-<#= page.orderDesc ? 'up' : 'down' #>' /><# } #></th>
                 <th id="header_Certificate"><i class="icon-reorder"></i>&nbsp; Attestato<# if (page.orderBy ==
                     'Certificate') { #> <i class='icon-arrow-<#= page.orderDesc ? 'up' : 'down' #>' /><# } #></th>
 <!--				<th id="header_Duration"><i class="icon-time"></i>&nbsp; Duration<# if (page.orderBy == 'Duration') { #> <i class='icon-arrow-<#= page.orderDesc ? 'up' : 'down' #>' /><# } #></th>-->
@@ -212,6 +214,10 @@
 				<td><#= _.escape(item.get('categoryName') || '') #></td>
 				<td><#= _.escape(item.get('description') || '') #></td>
                 <td><#= _.escape(item.get('promoter') || '') #></td>
+                <td style="font-size: 15px;"><#if (item.get('start')) { #><#= _date(app.parseDate(item.get('start')))
+                    .format
+                    ('DD-MM-YY')
+                    #><# } else { #>NULL<# } #></td>
                 <td><#= item.get('certificate') == 1 ? 'Sì' : 'No' #></td>
 <!--				<td class="rtext"><#= _.escape(item.get('durationFormatted') || '') #></td>-->
 				<td class="rtext"><#= _.escape(item.get('explicitDuration') || '') #></td>
