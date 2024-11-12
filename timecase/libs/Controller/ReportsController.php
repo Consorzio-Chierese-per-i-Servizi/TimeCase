@@ -282,7 +282,7 @@ class ReportsController extends AppBaseController
 		<meta content="TimeCase" name="description">
 		<meta content="alcalbg | interactive32.com" name="author">
 		<link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
-		<link rel="stylesheet" href="styles/style.css?t=2">
+		<link rel="stylesheet" href="styles/style.css?t=3">
 		</head>';
 		
 
