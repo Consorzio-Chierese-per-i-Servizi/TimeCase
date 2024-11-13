@@ -288,3 +288,14 @@ input[type="text"] {
     padding: 12px 5px;
 }
 
+#timeEntryDetailDialog .modal-header h3 {
+    font-size: 26px;
+}
+
+#timeEntryDetailDialog .form-horizontal, #timeEntryDetailDialog .form-horizontal .control-group {
+    margin-bottom: 12px;
+}
+
+#timeEntryDetailDialog .modal-body {
+    padding-bottom: 0;
+}
